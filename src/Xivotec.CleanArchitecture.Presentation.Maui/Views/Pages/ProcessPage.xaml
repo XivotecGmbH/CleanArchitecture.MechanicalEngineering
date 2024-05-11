@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:HeaderFooterPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Processes;assembly=Xivotec.CleanArchitecture.Presentation.Core"
+             xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
+             x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.ProcessPage"
+             x:DataType="viewModels:ProcessViewModel"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+    
+    <VerticalStackLayout VerticalOptions="Center">
+        <Label 
+            Text="Click me to write process log as test."
+            HorizontalOptions="Center" />
+
+        <Button Text="Run test process"
+            WidthRequest="300"
+            HorizontalOptions="Center"
+            Command="{Binding RunTestProcessCommand}" />
+    </VerticalStackLayout>
+    
+</controls:HeaderFooterPage>

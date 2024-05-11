@@ -1,0 +1,19 @@
+﻿<maui:MauiWinUIApplication
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:maui="using:Microsoft.Maui"
+    x:Class="Xivotec.CleanArchitecture.Presentation.Maui.WinUI.App">
+
+    <maui:MauiWinUIApplication.Resources>
+        <Style TargetType="Page">
+            <Setter Property="Transitions">
+                <Setter.Value>
+                    <TransitionCollection>
+                        <PopupThemeTransition/>
+                    </TransitionCollection>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </maui:MauiWinUIApplication.Resources>
+
+</maui:MauiWinUIApplication>

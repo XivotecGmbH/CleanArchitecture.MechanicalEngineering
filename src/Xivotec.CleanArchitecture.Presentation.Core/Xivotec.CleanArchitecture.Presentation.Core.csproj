@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+	<RootNamespace>Xivotec.CleanArchitecture.Presentation.Core</RootNamespace>
+	<AssemblyName>Xivotec.CleanArchitecture.Presentation.Core</AssemblyName>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" />
+    <PackageReference Include="Serilog.Extensions.Logging" />
+    <PackageReference Include="Serilog.Sinks.File" />
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Xivotec.CleanArchitecture.Application\Xivotec.CleanArchitecture.Application.csproj" />
+		<ProjectReference Include="..\Xivotec.CleanArchitecture.Infrastructure.PostgreSQLPort\Xivotec.CleanArchitecture.Infrastructure.PostgreSQLPort.csproj" />
+		<ProjectReference Include="..\Xivotec.CleanArchitecture.Infrastructure\Xivotec.CleanArchitecture.Infrastructure.csproj" />
+	</ItemGroup>
+</Project>

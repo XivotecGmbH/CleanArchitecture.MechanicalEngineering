@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:HeaderFooterPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Notification;assembly=Xivotec.CleanArchitecture.Presentation.Core"
+             xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
+             x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.Notification.NotificationDetailsPage"
+             x:DataType="viewModels:NotificationDetailsViewModel">
+
+    <Grid Margin="20"
+      RowDefinitions="Auto, Auto, Auto, *"
+      RowSpacing="20">
+        <Label Text="{Binding SelectedNotification.Title}" 
+            FontSize="32"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Center"
+            Grid.Row="0"/>
+        <Label Text="{Binding SelectedNotification.Timestamp,
+            StringFormat='Timestamp: {0:yyyy-MM-dd HH:mm:ss}'}"
+               FontSize="20"
+               HorizontalTextAlignment="Start"
+               Grid.Row="1"/>
+
+        <VerticalStackLayout
+            Grid.Row="2"
+            Spacing="20">
+            <Label Text="Content:"
+                   FontSize="24"/>
+            <ScrollView MaximumHeightRequest="500">
+                <Editor
+                    FontSize="20"
+                    Text="{Binding SelectedNotification.Content}"
+                    Placeholder="ToDoItem Note"
+                    AutoSize="TextChanges"
+                    IsReadOnly="True"/>
+            </ScrollView>
+        </VerticalStackLayout>
+
+        <HorizontalStackLayout Grid.Row="3"
+                               Spacing="20" 
+                               HeightRequest="75"
+                               HorizontalOptions="Center"
+                               VerticalOptions="End">
+            <Button WidthRequest="200"
+                    Text="{Binding ConfirmButtonText}"
+                    FontSize="32"
+                    FontAttributes="Bold"
+                    Command="{Binding ConfirmNotificationCommand}"
+                    IsEnabled="{Binding IsConfirmButtonActive}"/>
+            <Button WidthRequest="200"
+                    Text="Back"
+                    FontSize="32"
+                    FontAttributes="Bold"
+                    Command="{Binding NavigateBackCommand}"/>
+        </HorizontalStackLayout>
+    </Grid>
+</controls:HeaderFooterPage>

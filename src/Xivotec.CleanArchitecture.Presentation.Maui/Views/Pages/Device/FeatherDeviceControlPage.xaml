@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:HeaderFooterPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Device;assembly=Xivotec.CleanArchitecture.Presentation.Core"
+             xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
+             x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.Device.FeatherDeviceControlPage"
+             x:DataType="viewModels:FeatherDeviceControlViewModel"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView HeightRequest="600" VerticalOptions="Start">
+        <VerticalStackLayout Padding="30">
+            <VerticalStackLayout Spacing="50">
+                <Label Text="FeatherDevice" 
+                   FontSize="Medium" />
+
+                <VerticalStackLayout Spacing="20">
+                    <HorizontalStackLayout Spacing="40">
+                        <Label Text="Use Temperature Data: "
+                           VerticalTextAlignment="Center"
+                           WidthRequest="200"/>
+                        <CheckBox IsChecked="{Binding IsTempDataSelected}"
+                                  IsEnabled="{Binding IsDeviceConnected, Converter={StaticResource InvertedBoolConverter}}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="40">
+                        <Label Text="Use Distance Data: "
+                           VerticalTextAlignment="Center"
+                           WidthRequest="200"/>
+                        <CheckBox IsChecked="{Binding IsDistanceDataSelected}"
+                                  IsEnabled="{Binding IsDeviceConnected, Converter={StaticResource InvertedBoolConverter}}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="40">
+                        <Label Text="Use Light Data: "
+                           VerticalTextAlignment="Center"
+                           WidthRequest="200"/>
+                        <CheckBox IsChecked="{Binding IsLumenDataSelected}"
+                                  IsEnabled="{Binding IsDeviceConnected, Converter={StaticResource InvertedBoolConverter}}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="20" HorizontalOptions="Center">
+                    <HorizontalStackLayout Spacing="20">
+                        <Label Text="Connection State:" VerticalOptions="Center"/>
+                        <Label Text="{Binding ConnectionState}" VerticalOptions="Center"/>
+                        <Ellipse Fill="{Binding ConnectionStateColor}" 
+                                 WidthRequest="25" 
+                                 HeightRequest="25" 
+                                 VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="40">
+                        <Button
+                            Text="Connect"
+                            Command="{Binding ConnectCommand}"
+                            WidthRequest="150"
+                            HeightRequest="50"
+                            IsEnabled="{Binding IsDeviceConnected, Converter={StaticResource InvertedBoolConverter}}"/>
+                        <Button
+                            Text="Disconnect"
+                            Command="{Binding DisconnectCommand}"
+                            WidthRequest="150"
+                            HeightRequest="50"
+                            IsEnabled="{Binding IsDeviceConnected}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="40">
+                        <Button
+                            Text="Start"
+                            Command="{Binding StartCommand}"
+                            WidthRequest="150"
+                            HeightRequest="50"
+                            IsEnabled="{Binding IsDeviceConnected}"/>
+                        <Button
+                            Text="Stop"
+                            Command="{Binding StopCommand}"
+                            WidthRequest="150"
+                            HeightRequest="50"
+                            IsEnabled="{Binding IsDeviceConnected}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="40">
+                        <Button
+                            Text="Pause"
+                            Command="{Binding PauseCommand}"
+                            WidthRequest="150"
+                            HeightRequest="50"
+                            IsEnabled="{Binding IsDeviceConnected}"/>
+                        <Button
+                            Text="Continue"
+                            Command="{Binding ContinueCommand}"
+                            WidthRequest="150"
+                            HeightRequest="50"
+                            IsEnabled="{Binding IsDeviceConnected}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="20">
+                    <HorizontalStackLayout Spacing="40">
+                        <Label Text="Temperature (in C°)"/>
+                        <Label Text="{Binding TemperatureValue}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="40">
+                        <Label Text="Distance (in mm)"/>
+                        <Label Text="{Binding DistanceValue}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="40">
+                        <Label Text="Light (in Lumen)"/>
+                        <Label Text="{Binding LumenValue}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</controls:HeaderFooterPage>

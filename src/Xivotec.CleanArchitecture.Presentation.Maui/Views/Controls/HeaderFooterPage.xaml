@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
+             xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels;assembly=Xivotec.CleanArchitecture.Presentation.Core"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls.HeaderFooterPage"
+             x:DataType="viewModels:ViewModelBase"
+             Shell.PresentationMode="NotAnimated"
+             >
+    
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" IsVisible="False" />
+    </Shell.BackButtonBehavior>
+
+    <ContentPage.Behaviors>
+        <mct:EventToCommandBehavior
+            EventName="NavigatedTo"
+            Command="{Binding NavigatedToCommand}" />
+        <mct:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding PageAppearingCommand}" />
+        <mct:EventToCommandBehavior
+            EventName="Loaded"
+            Command="{Binding PageLoadedCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid RowDefinitions="Auto, *, Auto">
+
+                <!-- Header / Banner -->
+                <controls:BannerView Grid.Row="0"/>
+
+                <!-- Body -->
+                <Grid Grid.Row="1" ColumnDefinitions="Auto, *">
+
+                    <!-- Navigation -->
+                    <HorizontalStackLayout Spacing="5">
+                        <controls:MainMenuControl/>
+
+                        <BoxView WidthRequest="2" 
+                                 Color="{AppThemeBinding 
+                        Light={StaticResource Black},
+                        Dark={StaticResource Gray100}
+                    }"/>
+                    </HorizontalStackLayout>
+
+                    <!-- Content -->
+                    <ContentPresenter 
+                        x:Name="PageContent"
+                        Grid.Column="1"/>
+                </Grid>
+
+                <!-- Footer -->
+                <Label Grid.Row="2" 
+                       Text="XivoBlue - Xivotec GmbH"
+                       FontSize="18"
+                       HorizontalTextAlignment="Center"
+                />
+
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+</ContentPage>

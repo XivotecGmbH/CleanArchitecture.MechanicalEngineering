@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Xivotec.CleanArchitecture.Presentation.Maui.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages"
+    xmlns:notification="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.Notification"
+    xmlns:todo="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.ToDoList"
+    xmlns:device="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.Device"
+    FlyoutBehavior="Disabled"
+    >
+
+    <ShellContent 
+        ContentTemplate="{DataTemplate pages:MainPage}" 
+        Route="Home"/>
+
+    <ShellContent 
+        ContentTemplate="{DataTemplate device:DevicePage}" 
+        Route="Device"/>
+
+    <ShellContent 
+        ContentTemplate="{DataTemplate notification:NotificationsPage}" 
+        Route="Notification"/>
+
+    <ShellContent 
+        ContentTemplate="{DataTemplate todo:ToDoListPage}" 
+        Route="ToDoList"/>
+
+    <ShellContent 
+        ContentTemplate="{DataTemplate pages:ProcessPage}" 
+        Route="Process"/>
+
+    <ShellContent 
+        ContentTemplate="{DataTemplate pages:SettingsPage}" 
+        Route="Settings"/>
+
+</Shell>

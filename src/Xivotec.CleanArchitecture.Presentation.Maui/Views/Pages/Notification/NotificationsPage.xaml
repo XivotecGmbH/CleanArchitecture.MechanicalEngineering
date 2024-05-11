@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:HeaderFooterPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Notification;assembly=Xivotec.CleanArchitecture.Presentation.Core"
+             xmlns:dataTypes="clr-namespace:Xivotec.CleanArchitecture.Application.Notifications.Dtos;assembly=Xivotec.CleanArchitecture.Application"
+             xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
+             xmlns:converter="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Converter"
+             x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.Notification.NotificationsPage"
+             x:DataType="viewModels:NotificationsViewModel">
+
+    <ContentPage.Resources>
+        <converter:BoolToNotificationListItemButtonTextConverter x:Key="ConfirmButtonTextConverter"/>
+        <converter:NotificationTypeToNotificationListItemFrameColorConverter x:Key="FrameColorConverter"/>
+        <converter:NotificationToNotificationMessageConverter x:Key="NotificationMessageConverter"/>
+    </ContentPage.Resources>
+
+    <Grid Margin="20"
+          RowDefinitions="Auto, Auto, *"
+          RowSpacing="10">
+        <Label Text="Notifications" 
+        FontSize="32"
+        FontAttributes="Bold"
+        HorizontalTextAlignment="Center"/>
+
+        <ScrollView Grid.Row="2">
+            <StackLayout BindableLayout.ItemsSource="{Binding Notifications}"
+            Spacing="10">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type dataTypes:NotificationDto}">
+                        <Frame
+                        BackgroundColor="{AppThemeBinding
+                            Light={StaticResource Gray100},
+                            Dark={StaticResource Black}}"
+                        BorderColor="{Binding .,
+                            Converter={StaticResource FrameColorConverter}}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer                                     
+                                    Command="{Binding Source={
+                                        RelativeSource AncestorType={
+                                            x:Type viewModels:NotificationsViewModel}},
+                                        Path=NotificationTappedCommand}"
+                                    CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Label Text="{Binding .,
+                                    Converter={StaticResource NotificationMessageConverter}}"
+                                FontSize="24" 
+                                VerticalOptions="Center"
+                                TextColor="{Binding .,
+                                    Converter={StaticResource FrameColorConverter}}"/>
+                                <Button
+                                    Grid.Column="1"
+                                    HeightRequest="25"
+                                    WidthRequest="110"
+                                    Text="{Binding Acknowledged,
+                                        Converter={
+                                            StaticResource ConfirmButtonTextConverter}}"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="{AppThemeBinding
+                                        Dark=#EBEBEB,
+                                        Light=Black}"
+                                    BorderWidth="2"
+                                    TextColor="{AppThemeBinding
+                                        Dark=White,
+                                        Light=Black}"
+                                    Command="{Binding Source={
+                                        RelativeSource AncestorType={
+                                            x:Type viewModels:NotificationsViewModel}},
+                                        Path=AcknowledgeTappedCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</controls:HeaderFooterPage>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:HeaderFooterPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Device;assembly=Xivotec.CleanArchitecture.Presentation.Core"
+             xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
+             x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.Device.FeatherDeviceConfigPage"
+             xmlns:converter="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Converter"
+             x:DataType="viewModels:FeatherDeviceConfigViewModel"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <ContentPage.Resources>
+        <converter:SystemColorToMauiColorConverter x:Key="SystemColorToMauiColorConverter"/>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Padding="30" Spacing="20">
+        <Label Text="Feather device configuration:"/>
+
+        <HorizontalStackLayout Spacing="40">
+            <Label Text="Name: " VerticalOptions="Center" WidthRequest="150"/>
+            <Border Stroke="{Binding BorderColorDeviceName,
+                Converter={StaticResource SystemColorToMauiColorConverter}}" 
+                    StrokeThickness="3">
+                <Entry Placeholder="Device name" Text="{Binding DeviceName}"/>
+            </Border>
+        </HorizontalStackLayout>
+        <Label Text="Invalid Input (Should not be empty)" 
+           TextColor="Red" 
+           FontSize="14"
+           IsVisible="{Binding IsErrorLabelDeviceNameActive}"/>
+
+        <HorizontalStackLayout Spacing="40">
+            <Label Text="Port: " VerticalOptions="Center" WidthRequest="150"/>
+            <Border Stroke="{Binding BorderColorPort,
+                Converter={StaticResource SystemColorToMauiColorConverter}}" 
+                    StrokeThickness="3">
+                <Entry Placeholder="Com port" Text="{Binding ComPortEntryValue}"/>
+            </Border>
+        </HorizontalStackLayout>
+
+        <Label Text="Invalid Input (Only positive 3-digit numbers allowed)" 
+           TextColor="Red" 
+           FontSize="14"
+           IsVisible="{Binding IsErrorLabelPortActive}"/>
+
+        <Button Text="Apply"
+                WidthRequest="200"
+                Command="{Binding ApplyChangesCommand}"/>
+    </VerticalStackLayout>
+
+</controls:HeaderFooterPage>

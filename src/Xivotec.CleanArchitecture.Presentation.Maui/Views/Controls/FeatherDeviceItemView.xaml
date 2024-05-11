@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dataTypes="clr-namespace:Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;assembly=Xivotec.CleanArchitecture.Application"
+             xmlns:controlViewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Controls;assembly=Xivotec.CleanArchitecture.Presentation.Core"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls.FeatherDeviceItemView"
+             x:DataType="controlViewModels:FeatherDeviceItemViewModel">
+
+
+    <VerticalStackLayout Spacing="20">
+        <Label Text="FeatherDevices:" IsVisible="{Binding IsListDevicesFilled}"/>
+
+        <ScrollView Padding="20" HeightRequest="300">
+            <StackLayout BindableLayout.ItemsSource="{Binding Devices}"
+            Spacing="10">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type dataTypes:FeatherDeviceDto}" >
+                        <Frame BorderColor="Gray" BackgroundColor="{AppThemeBinding Light={StaticResource Gray100},
+                        Dark={StaticResource Black}}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type controlViewModels:FeatherDeviceItemViewModel}}, 
+                                Path=ListTappedCommand}" CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                            <Grid ColumnDefinitions="*, Auto">
+                                <HorizontalStackLayout Spacing="20">
+                                    <Label Text="{Binding Name}"
+                                    FontSize="24" 
+                                    VerticalOptions="Center"/>
+                                    <Label Text=":"
+                                    FontSize="24" 
+                                    VerticalOptions="Center"/>
+                                    <Label Text="{Binding ComPort}"
+                                    FontSize="24" 
+                                    VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Grid.Column="1"  Spacing="10">
+                                    <ImageButton Source="icon_edit.png"
+                                    HeightRequest="25" 
+                                    WidthRequest="25"
+                                    Command="{Binding Source={ 
+                                        RelativeSource AncestorType={x:Type controlViewModels:FeatherDeviceItemViewModel}}, 
+                                        Path=EditListCommand}"
+                                    CommandParameter="{Binding .}" />
+                                    <ImageButton Source="icon_bin.png" 
+                                    HeightRequest="25" 
+                                    WidthRequest="25"
+                                    Command="{Binding Source={ 
+                                        RelativeSource AncestorType={x:Type controlViewModels:FeatherDeviceItemViewModel}}, 
+                                        Path=DeleteListCommand}"
+                                    CommandParameter="{Binding .}" />
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentView>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:HeaderFooterPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Recipe.FeatherDevice;assembly=Xivotec.CleanArchitecture.Presentation.Core"
+             xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
+             x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.Recipe.FeatherDevice.FeatherDeviceRecipeDetailPage"
+             x:DataType="viewModels:FeatherDeviceRecipeDetailViewModel">
+
+    <VerticalStackLayout Padding="30" Spacing="20">
+        <ImageButton Source="{AppThemeBinding 
+            Light=icon_back.png, 
+            Dark=icon_back_white.png}"
+            HeightRequest="30"
+            HorizontalOptions="Start"
+            Command="{Binding NavigateBackCommand}"/>
+
+        <Label Text="FeatherDevice Recipe" 
+            FontSize="32"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Center"/>
+
+        <ScrollView HeightRequest="600" VerticalOptions="Start">
+            <VerticalStackLayout Spacing="20">
+                <Button VerticalOptions="Center"
+                    Text="Import"
+                    Command="{Binding ImportRecipeCommand}"
+                    WidthRequest="200"/>
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="20">
+                    <HorizontalStackLayout Spacing="20">
+                        <Label Text="Name:" WidthRequest="200" VerticalOptions="Center"/>
+                        <Entry Text="{Binding RecipeNameEntryValue}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="20">
+                        <Label Text="Interval:" WidthRequest="200" VerticalOptions="Center"/>
+                        <Entry Text="{Binding IntervalEntryValue}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="20">
+                        <Label Text="Led Color:" WidthRequest="200" VerticalOptions="Center"/>
+                        <Picker ItemsSource="{Binding Colors}"
+                            SelectedItem="{Binding SelectedLedColor}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="20">
+                        <Label Text="Is Led switched on:" WidthRequest="200" VerticalOptions="Center"/>
+                        <CheckBox IsChecked="{Binding IsLedSwitchedOnValue}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="20">
+                        <Label Text="Is Display switched on:" WidthRequest="200" VerticalOptions="Center"/>
+                        <CheckBox IsChecked="{Binding IsDisplaySwitchedOnValue}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <Label Text="{Binding RecipeInputErrorLabel}" TextColor="Red" HorizontalOptions="Center"/>
+
+                <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                    <Button Text="Save"
+                    WidthRequest="200"
+                    Command="{Binding SaveRecipeCommand}"/>
+
+                    <Button Text="Export"
+                    WidthRequest="200"
+                    Command="{Binding ExportRecipeCommand}"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </VerticalStackLayout>
+</controls:HeaderFooterPage>
