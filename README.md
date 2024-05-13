@@ -21,9 +21,7 @@
 [linkedin-url]: https://de.linkedin.com/company/xivotec
 
 # A Clean Architecture .NET Mechanical Engineering Template
-![github_build-url]
 [![License][license-shield]][license-url]
-[![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
 
