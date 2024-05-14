@@ -1,17 +1,12 @@
 <!-- Project Shields & URLs -->
 [github_build-shield]: https://img.shields.io/badge/
 [license-shield]: https://img.shields.io/github/license/XivotecGmbH/CleanArchitecture.MechanicalEngineering
-[license-url]: https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering/blob/master/LICENSE
+[license-url]: https://github.com/XivotecGmbH/CleanArchitecture.Maui/blob/master/LICENSE
 [contributors-url]: https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/XivotecGmbH/CleanArchitecture.MechanicalEngineering
 [forks-url]: https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering/network/members
 [issues-shield]: https://img.shields.io/github/issues/XivotecGmbH/CleanArchitecture.MechanicalEngineering
 [issues-url]: https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering/issues
-
-[nuget-shield]: https://img.shields.io/nuget/v/Xivotec.CleanArchitecture.MechanicalEngineering.Template?label=NuGet
-[nuget-url]: https://www.nuget.org/packages/Xivotec.CleanArchitecture.MechanicalEngineering.Template
-[nuget-d-shield]: https://img.shields.io/nuget/dt/Xivotec.CleanArchitecture.MechanicalEngineering.Template?label=Downloads
-[nuget-d-url]: https://www.nuget.org/packages/Xivotec.CleanArchitecture.MechanicalEngineering.Template
 
 [website-shield]: https://img.shields.io/badge/Xivotec-blue
 [website-url]: https://xivotec.com/
@@ -25,9 +20,6 @@
 [![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
 
-[![NugetLink][nuget-shield]][nuget-url]
-[![NugetDownloads][nuget-d-shield]][nuget-d-url]
-
 [![Website][website-shield]][website-url]
 [![Instagram][instagram-shield]][instagram-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
@@ -36,7 +28,7 @@ The goal of this template is to provide a straightforward and efficient approach
 Using this template, you can easily create a multi platform app for communicating with multiple hardware devices, while adhering to the core principles of Clean Architecture.
 
 ## Getting Started
-The easiest way to get started with this template is to install the [NuGet package][nuget-d-url]
+The easiest way to get started with this template is to download it.
 
 ### Prerequisites
 - Install the latest .NET 8.x SDK & Tools
@@ -44,22 +36,6 @@ The easiest way to get started with this template is to install the [NuGet packa
 - Install the latest .NET MAUI package
 - Install / have access to a PostgreSQL database (optional, see below)
 - Enable Developer Mode on your device (required for debugging .NET MAUI applications)
-
-### Installation
-[1] Open the command prompt and run:
-
-```bash
-dotnet new install Xivotec.CleanArchitecture.Maui.Template
-```
-
-[2] Once installed, create a new solution in your project folder or from Visual Studio :
-
-```bash
-dotnet new xt-camaui-sln -n <YourProjectName>
-```
-
-Because .NET MAUI is packaged by default, `dotnet run` won't work.  
-Instead, open your solution in Visual Studio directly and run it from there.
 
 ## Database
 
