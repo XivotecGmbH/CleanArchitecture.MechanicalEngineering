@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+
+  <metadata>
+    <id>XivoBlue.MechanicalEngineering.Template</id>
+    <version>2.0.1</version>
+    <title>Clean Architecture .NET Solution Template For Mechanical Engineering</title>
+    <authors>Xivotec GmbH</authors>
+	
+    <description>
+		Clean Architecture Solution Template for mechanical engineering.
+	</description>
+	
+    <summary>
+		Adapting Clean Architecture To Connect And Communicate With Hardware Devices
+    </summary>
+	
+    <releaseNotes>
+		Initial Mechanical Engineering Release Version
+    </releaseNotes>
+
+    <projectUrl>https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering</projectUrl>
+    <repository type="git" url="https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering.git" branch="main" />
+
+    <license type="expression">MIT</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>clean-architecture project template csharp dotnet dotnetmaui mechanical engineering machine hardware device recipe process</tags>
+	<icon>company_logo_black.png</icon>
+    <readme>README.md</readme>
+	
+  </metadata>
+  
+  <files>
+    <file src=".template.config\company_logo_black.png" />
+    <file src="README.md" />
+    <file src=".\**" target="content" exclude="**\bin\**;**\obj\**;.\.vs\**;.\.git\**;.\.github\**;.\.sonarqube\**;.\LICENSE;.\README.md;" />
+  </files>
+  
+ </package>

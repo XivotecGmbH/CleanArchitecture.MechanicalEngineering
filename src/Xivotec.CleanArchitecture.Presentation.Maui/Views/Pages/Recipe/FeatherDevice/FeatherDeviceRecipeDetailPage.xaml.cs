@@ -4,8 +4,8 @@ namespace Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.Recipe.Feather
 
 public partial class FeatherDeviceRecipeDetailPage
 {
-	public FeatherDeviceRecipeDetailPage(FeatherDeviceRecipeDetailViewModel vm)
-	{
+    public FeatherDeviceRecipeDetailPage(FeatherDeviceRecipeDetailViewModel vm)
+    {
         InitializeComponent();
         BindingContext = vm;
     }

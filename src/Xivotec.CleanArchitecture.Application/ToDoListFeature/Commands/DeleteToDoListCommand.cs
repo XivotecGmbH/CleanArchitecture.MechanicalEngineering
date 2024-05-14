@@ -11,7 +11,7 @@ namespace Xivotec.CleanArchitecture.Application.ToDoListFeature.Commands;
 /// <summary>
 /// Command which deletes the requested <see cref="ToDoListDto"/> from the repository.
 /// </summary>
-/// <param name="item">The <see cref="ToDoListDto"/> to be deleted.</param>
+/// <param name="Item">The <see cref="ToDoListDto"/> to be deleted.</param>
 public record DeleteToDoListCommand(ToDoListDto Item) : IRequest;
 
 public class DeleteToDoListHandler : IRequestHandler<DeleteToDoListCommand>

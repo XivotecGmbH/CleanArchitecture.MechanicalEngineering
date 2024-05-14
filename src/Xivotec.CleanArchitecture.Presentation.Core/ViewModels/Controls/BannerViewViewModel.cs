@@ -1,8 +1,8 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using System.Timers;
-using MediatR;
 using Xivotec.CleanArchitecture.Application.Common.Persistence;
 using Xivotec.CleanArchitecture.Application.Messages;
 using Xivotec.CleanArchitecture.Application.Services.Time;

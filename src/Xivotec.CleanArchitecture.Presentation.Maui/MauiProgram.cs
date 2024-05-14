@@ -25,6 +25,7 @@ public static class MauiProgram
             .RegisterPresentationModels()
             .RegisterPresentationServices()
             .RegisterInfrastructureServices()
+            .RegisterDevicePortServices()
             .RegisterPostgreSqlPortServices()
             .RegisterRoutes();
 

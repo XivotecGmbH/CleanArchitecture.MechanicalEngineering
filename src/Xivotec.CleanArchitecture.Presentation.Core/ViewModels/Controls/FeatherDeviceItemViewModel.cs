@@ -7,12 +7,10 @@ using System.Collections.ObjectModel;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Commands;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Queries;
-using Xivotec.CleanArchitecture.Application.RecipeFeature.Dtos;
 using Xivotec.CleanArchitecture.Application.Services.Device;
 using Xivotec.CleanArchitecture.Presentation.Core.Messages;
 using Xivotec.CleanArchitecture.Presentation.Core.Services.Navigation;
 using Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Device;
-using Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Recipe.FeatherDevice;
 
 namespace Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Controls;
 
@@ -57,9 +55,9 @@ public partial class FeatherDeviceItemViewModel : ViewModelBase,
 
 
     [RelayCommand]
-    public async Task ListTapped(FeatherDeviceRecipeDto featherDeviceDto)
+    public async Task ListTapped(FeatherDeviceDto featherDeviceDto)
     {
-        await Navigation.NavigateToAsync(nameof(FeatherDeviceRecipeDetailViewModel), featherDeviceDto);
+        await Navigation.NavigateToAsync(nameof(FeatherDeviceControlViewModel), featherDeviceDto);
     }
 
     public void Receive(DevicePageAppearingMessage message)

@@ -1,0 +1,44 @@
+{
+	"$schema": "http://json.schemastore.org/template",
+	"author": "Xivotec GmbH",
+	"classifications": 
+	[ 
+		"Clean Architecture", 
+		"Mechanical Engineering" 
+	],
+	"name": "Clean Architecture .NET Solution Template For Mechanical Engineering",
+	"description": "Adapting Clean Architecture To Connect And Communicate With Hardware Devices",
+	"identity": "Xivotec.CleanArchitecture.MechanicalEngineering.Template",
+	"groupIdentity": "Xivotec.Templates.MechanicalEngineering",
+	"shortName": "xt-came-sln",
+	"tags": 
+	{
+		"language": "C#",
+		"type": "project"
+	},
+	"sourceName":"Xivotec.CleanArchitecture",
+	"preferNameDirectory": true,
+	"sources": 
+	[
+		{
+			"source": "./",
+			"target": "./",
+			"exclude": 
+			[
+				"**/[Bb]in/**/*",
+				"**/[Oo]bj/**/*",
+				"**/.vs/**/*",
+				".git/**/*",
+				".github/**/*",
+				".template.config/**/*",				
+				"*.nuspec",
+				".sonar*/**/*",
+				"*coverage*.xml"
+			],
+			"rename": 
+			{
+				"README-template.md": "README.md"
+			}
+		}
+	]
+}

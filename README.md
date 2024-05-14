@@ -1,17 +1,17 @@
 <!-- Project Shields & URLs -->
 [github_build-shield]: https://img.shields.io/badge/
 [license-shield]: https://img.shields.io/github/license/XivotecGmbH/CleanArchitecture.MechanicalEngineering
-[license-url]: https://github.com/XivotecGmbH/CleanArchitecture.Maui/blob/master/LICENSE
+[license-url]: https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering/blob/master/LICENSE
 [contributors-url]: https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/XivotecGmbH/CleanArchitecture.MechanicalEngineering
 [forks-url]: https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering/network/members
 [issues-shield]: https://img.shields.io/github/issues/XivotecGmbH/CleanArchitecture.MechanicalEngineering
 [issues-url]: https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering/issues
 
-[nuget-shield]: https://img.shields.io/nuget/v/Xivotec.CleanArchitecture.Maui.Template?label=NuGet
-[nuget-url]: https://www.nuget.org/packages/Xivotec.CleanArchitecture.Maui.Template
-[nuget-d-shield]: https://img.shields.io/nuget/dt/Xivotec.CleanArchitecture.Maui.Template?label=Downloads
-[nuget-d-url]: https://www.nuget.org/packages/Xivotec.CleanArchitecture.Maui.Template
+[nuget-shield]: https://img.shields.io/nuget/v/Xivotec.CleanArchitecture.MechanicalEngineering.Template?label=NuGet
+[nuget-url]: https://www.nuget.org/packages/Xivotec.CleanArchitecture.MechanicalEngineering.Template
+[nuget-d-shield]: https://img.shields.io/nuget/dt/Xivotec.CleanArchitecture.MechanicalEngineering.Template?label=Downloads
+[nuget-d-url]: https://www.nuget.org/packages/Xivotec.CleanArchitecture.MechanicalEngineering.Template
 
 [website-shield]: https://img.shields.io/badge/Xivotec-blue
 [website-url]: https://xivotec.com/
@@ -21,9 +21,7 @@
 [linkedin-url]: https://de.linkedin.com/company/xivotec
 
 # A Clean Architecture .NET Mechanical Engineering Template
-![github_build-url]
 [![License][license-shield]][license-url]
-[![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
 

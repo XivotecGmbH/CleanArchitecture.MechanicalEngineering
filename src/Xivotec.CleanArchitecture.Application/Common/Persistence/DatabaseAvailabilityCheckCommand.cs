@@ -17,7 +17,7 @@ public class DatabaseAvailabilityCheckHandler : IRequestHandler<DatabaseAvailabi
 
     public Task Handle(DatabaseAvailabilityCheckCommand request, CancellationToken cancellationToken)
     {
-       _ = _unitOfWork.GetRepository<ToDoList>();
-       return Task.CompletedTask;
+        _ = _unitOfWork.GetRepository<ToDoList>();
+        return Task.CompletedTask;
     }
 }
