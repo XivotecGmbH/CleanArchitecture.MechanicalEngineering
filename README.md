@@ -30,6 +30,9 @@
 The goal of this template is to provide a straightforward and efficient approach for application development in the area of mechinal engineering, leveraging the power of Clean Architecture.
 Using this template, you can easily create a multi platform app for communicating with multiple hardware devices, while adhering to the core principles of Clean Architecture.
 
+## Getting Started
+The easiest way to get started with this template is to install the [NuGet package][nuget-d-url]
+
 ## Prerequisites
 - Install the latest .NET 8.x SDK & Tools
 - Install the latest version of Visual Studio IDE
