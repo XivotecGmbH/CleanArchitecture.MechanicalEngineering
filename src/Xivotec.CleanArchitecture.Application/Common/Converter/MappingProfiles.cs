@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
+using Xivotec.CleanArchitecture.Application.Common.Recipe;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;
+using Xivotec.CleanArchitecture.Application.FeatherRecipeFeature.Dtos;
 using Xivotec.CleanArchitecture.Application.Notifications.Dtos;
-using Xivotec.CleanArchitecture.Application.RecipeFeature.Dtos;
 using Xivotec.CleanArchitecture.Application.ToDoListFeature.Dtos;
 using Xivotec.CleanArchitecture.Domain.FeatherDeviceAggregate.Entities;
 using Xivotec.CleanArchitecture.Domain.FeatherDeviceAggregate.Enums;

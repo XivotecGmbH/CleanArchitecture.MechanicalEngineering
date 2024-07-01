@@ -9,8 +9,8 @@ namespace Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Commands;
 /// <summary>
 /// Command which deletes the requested <see cref="FeatherDeviceDto"/> from the repository.
 /// </summary>
-/// <param name="device">The <see cref="FeatherDeviceDto"/> to be deleted.</param>
-public record DeleteFeatherDeviceCommand(FeatherDeviceDto device) : IRequest;
+/// <param name="FeatherDevice">The <see cref="FeatherDeviceDto"/> to be deleted.</param>
+public record DeleteFeatherDeviceCommand(FeatherDeviceDto FeatherDevice) : IRequest;
 
 public class DeleteFeatherDeviceHandler : IRequestHandler<DeleteFeatherDeviceCommand>
 {
@@ -25,7 +25,7 @@ public class DeleteFeatherDeviceHandler : IRequestHandler<DeleteFeatherDeviceCom
 
     public async Task Handle(DeleteFeatherDeviceCommand request, CancellationToken cancellationToken)
     {
-        var itemToDelete = _mapper.Map<FeatherDevice>(request.device);
+        var itemToDelete = _mapper.Map<FeatherDevice>(request.FeatherDevice);
 
         var repo = _unitOfWork.GetRepository<FeatherDevice>();
         await repo.DeleteAsync(itemToDelete);

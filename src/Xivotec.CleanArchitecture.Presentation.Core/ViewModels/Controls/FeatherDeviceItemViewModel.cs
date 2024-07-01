@@ -7,7 +7,6 @@ using System.Collections.ObjectModel;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Commands;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Queries;
-using Xivotec.CleanArchitecture.Application.Services.Device;
 using Xivotec.CleanArchitecture.Presentation.Core.Messages;
 using Xivotec.CleanArchitecture.Presentation.Core.Services.Navigation;
 using Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Device;
@@ -24,17 +23,14 @@ public partial class FeatherDeviceItemViewModel : ViewModelBase,
     private ObservableCollection<FeatherDeviceDto> _devices = [];
 
     private readonly IMediator _mediator;
-    private readonly IFeatherDeviceService _featherDeviceService;
 
     public FeatherDeviceItemViewModel(
         INavigationService navigation,
         ILogger<FeatherDeviceItemViewModel> logger,
-        IFeatherDeviceService featherDeviceService,
         IMediator mediator)
         : base(navigation, logger)
     {
         _mediator = mediator;
-        _featherDeviceService = featherDeviceService;
 
         Task.Run(RefreshList).GetAwaiter().GetResult();
     }
@@ -48,7 +44,7 @@ public partial class FeatherDeviceItemViewModel : ViewModelBase,
     [RelayCommand]
     public async Task DeleteList(FeatherDeviceDto featherDeviceDto)
     {
-        await _featherDeviceService.DeinitializeAsync(featherDeviceDto);
+        await _mediator.Send(new DeinitializeFeatherDeviceCommand(featherDeviceDto));
         await _mediator.Send(new DeleteFeatherDeviceCommand(featherDeviceDto));
         await RefreshList();
     }

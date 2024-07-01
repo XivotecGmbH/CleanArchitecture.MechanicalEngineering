@@ -1,5 +1,5 @@
-﻿using Xivotec.CleanArchitecture.Application.RecipeFeature.Dtos;
-using Xivotec.CleanArchitecture.Domain.FeatherDeviceAggregate.Enums;
+﻿using Xivotec.CleanArchitecture.Application.Common.Recipe;
+using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;
 using Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.Device.Interface;
 
 namespace Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.Device.Sdk;
@@ -13,7 +13,7 @@ public class FeatherSdk : IFeatherSdk
 
     public event FeatherSdkNotificationHandler? NotificationReceived;
 
-    public ConnectionState ConnectionState { get; set; }
+    public ConnectionStateDto ConnectionState { get; set; }
 
     public Task Initialize(string comPort)
     {
@@ -35,9 +35,9 @@ public class FeatherSdk : IFeatherSdk
         return Task.CompletedTask;
     }
 
-    public Task GetCurrentRecipe()
+    public Task<XivotecRecipeDto> GetCurrentRecipe()
     {
-        return Task.CompletedTask;
+        return Task.FromResult(new XivotecRecipeDto());
     }
 
     public Task Start()

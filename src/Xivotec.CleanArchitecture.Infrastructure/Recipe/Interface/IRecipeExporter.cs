@@ -1,4 +1,4 @@
-﻿using Xivotec.CleanArchitecture.Application.RecipeFeature.Dtos;
+﻿using Xivotec.CleanArchitecture.Application.Common.Recipe;
 
 namespace Xivotec.CleanArchitecture.Infrastructure.Recipe.Interface;
 

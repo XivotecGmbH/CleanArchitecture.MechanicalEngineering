@@ -12,8 +12,8 @@ public sealed class UpdateToDoListCommandValidator : AbstractValidator<UpdateToD
 
     public UpdateToDoListCommandValidator()
     {
-        RuleFor(x => x.item.Id).NotEmpty();
-        RuleFor(x => x.item.Title).NotEmpty();
-        RuleFor(x => x.item.Title).MaximumLength(MaxLength);
+        RuleFor(x => x.Item.Id).NotEmpty();
+        RuleFor(x => x.Item.Title).NotEmpty();
+        RuleFor(x => x.Item.Title).MaximumLength(MaxLength);
     }
 }

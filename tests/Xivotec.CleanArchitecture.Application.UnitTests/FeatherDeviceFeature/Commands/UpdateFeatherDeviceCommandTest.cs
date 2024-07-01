@@ -11,9 +11,8 @@ public class UpdateFeatherDeviceCommandTest
 {
     private readonly IMapper _mapper = Substitute.For<IMapper>();
     private readonly IUnitOfWork _unitOfWork = Substitute.For<IUnitOfWork>();
-
+    private readonly IRepository<FeatherDevice> _featherDeviceRepository = Substitute.For<IRepository<FeatherDevice>>();
     private readonly FeatherDeviceFeatureTestObjects _testObjects;
-
     private readonly UpdateFeatherDeviceHandler _sut;
 
     public UpdateFeatherDeviceCommandTest()
@@ -28,15 +27,14 @@ public class UpdateFeatherDeviceCommandTest
     public async Task Handle_ShouldRun_WhenRequestIsValid()
     {
         //Arrange
-        var repo = Substitute.For<IRepository<FeatherDevice>>();
 
         _mapper.Map<FeatherDevice>(Arg.Is(_testObjects.FeatherDeviceDto)).Returns(_testObjects.FeatherDevices[0]);
-        _unitOfWork.GetRepository<FeatherDevice>().Returns(repo);
+        _unitOfWork.GetRepository<FeatherDevice>().Returns(_featherDeviceRepository);
 
         //Act
         await _sut.Handle(new UpdateFeatherDeviceCommand(_testObjects.FeatherDeviceDto), CancellationToken.None);
 
         //Assert
-        await repo.Received(1).UpdateAsync(Arg.Is(_testObjects.FeatherDevices[0]));
+        await _featherDeviceRepository.Received(1).UpdateAsync(Arg.Is(_testObjects.FeatherDevices[0]));
     }
 }

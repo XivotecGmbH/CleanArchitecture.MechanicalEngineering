@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using Xivotec.CleanArchitecture.Application.Processes;
-using Xivotec.CleanArchitecture.Application.Processes.Exceptions;
+using Xivotec.CleanArchitecture.Application.Common.Process;
+using Xivotec.CleanArchitecture.Application.Common.Process.Exceptions;
 using Xunit;
 
 namespace Xivotec.CleanArchitecture.Application.UnitTests.ProcessSystem;

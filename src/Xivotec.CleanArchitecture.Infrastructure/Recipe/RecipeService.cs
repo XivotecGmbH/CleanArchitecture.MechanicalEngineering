@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Xivotec.CleanArchitecture.Application.Common.Persistence.Interfaces;
-using Xivotec.CleanArchitecture.Application.RecipeFeature;
-using Xivotec.CleanArchitecture.Application.RecipeFeature.Dtos;
+using Xivotec.CleanArchitecture.Application.Common.Recipe;
+using Xivotec.CleanArchitecture.Application.Common.Recipe.Interface;
 using Xivotec.CleanArchitecture.Domain.RecipeAggregate;
 using Xivotec.CleanArchitecture.Infrastructure.Recipe.Interface;
 

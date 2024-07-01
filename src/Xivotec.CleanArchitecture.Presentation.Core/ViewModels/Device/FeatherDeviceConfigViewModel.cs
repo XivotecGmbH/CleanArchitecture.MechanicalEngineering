@@ -5,7 +5,6 @@ using Microsoft.Extensions.Logging;
 using System.Drawing;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Commands;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;
-using Xivotec.CleanArchitecture.Application.Services.Device;
 using Xivotec.CleanArchitecture.Presentation.Core.Messages;
 using Xivotec.CleanArchitecture.Presentation.Core.Services.Navigation;
 
@@ -38,17 +37,14 @@ public partial class FeatherDeviceConfigViewModel : ViewModelBase
     [ObservableProperty]
     private Color _borderColorDeviceName = new();
 
-    private readonly IFeatherDeviceService _featherDeviceService;
     private readonly IMediator _mediator;
 
     public FeatherDeviceConfigViewModel(
         INavigationService navigation,
         ILogger<FeatherDeviceConfigViewModel> logger,
-        IFeatherDeviceService featherDeviceService,
         IMediator mediator)
         : base(navigation, logger)
     {
-        _featherDeviceService = featherDeviceService;
         _mediator = mediator;
     }
 
@@ -106,11 +102,11 @@ public partial class FeatherDeviceConfigViewModel : ViewModelBase
 
             await _mediator.Send(new AddFeatherDeviceCommand(deviceDto));
 
-            await _featherDeviceService.InitialiseAsync(deviceDto);
+            await _mediator.Send(new InitializeFeatherDeviceCommand(deviceDto));
         }
         else
         {
-            await _featherDeviceService.DeinitializeAsync(FeatherDevice);
+            await _mediator.Send(new DeinitializeFeatherDeviceCommand(FeatherDevice));
 
             var deviceDto = new FeatherDeviceDto
             {
@@ -122,7 +118,7 @@ public partial class FeatherDeviceConfigViewModel : ViewModelBase
 
             await _mediator.Send(new UpdateFeatherDeviceCommand(deviceDto));
 
-            await _featherDeviceService.InitialiseAsync(deviceDto);
+            await _mediator.Send(new InitializeFeatherDeviceCommand(deviceDto));
         }
     }
 

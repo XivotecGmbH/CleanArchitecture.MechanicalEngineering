@@ -9,8 +9,8 @@ namespace Xivotec.CleanArchitecture.Application.ToDoListFeature.Commands;
 /// <summary>
 /// Command which deletes the requested <see cref="ToDoItemDto"/> from the repository.
 /// </summary>
-/// <param name="item">The <see cref="ToDoItemDto"/> to be deleted.</param>
-public record DeleteToDoItemCommand(ToDoItemDto item) : IRequest;
+/// <param name="Item">The <see cref="ToDoItemDto"/> to be deleted.</param>
+public record DeleteToDoItemCommand(ToDoItemDto Item) : IRequest;
 
 public class DeleteToDoItemHandler : IRequestHandler<DeleteToDoItemCommand>
 {
@@ -25,7 +25,7 @@ public class DeleteToDoItemHandler : IRequestHandler<DeleteToDoItemCommand>
 
     public async Task Handle(DeleteToDoItemCommand request, CancellationToken cancellationToken)
     {
-        var itemToDelete = _mapper.Map<ToDoItem>(request.item);
+        var itemToDelete = _mapper.Map<ToDoItem>(request.Item);
 
         var repo = _unitOfWork.GetRepository<ToDoItem>();
         await repo.DeleteAsync(itemToDelete);

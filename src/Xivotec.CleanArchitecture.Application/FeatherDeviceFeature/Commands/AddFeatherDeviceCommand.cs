@@ -9,8 +9,8 @@ namespace Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Commands;
 /// <summary>
 /// Command which saves a <see cref="FeatherDeviceDto"/> to the repository.
 /// </summary>
-/// <param name="device">The <see cref="FeatherDeviceDto"/> to be saved.</param>
-public record AddFeatherDeviceCommand(FeatherDeviceDto device) : IRequest<FeatherDeviceDto>;
+/// <param name="FeatherDevice">The <see cref="FeatherDeviceDto"/> to be saved.</param>
+public record AddFeatherDeviceCommand(FeatherDeviceDto FeatherDevice) : IRequest<FeatherDeviceDto>;
 
 public class AddFeatherDeviceHandler : IRequestHandler<AddFeatherDeviceCommand, FeatherDeviceDto>
 {
@@ -25,7 +25,7 @@ public class AddFeatherDeviceHandler : IRequestHandler<AddFeatherDeviceCommand, 
 
     public async Task<FeatherDeviceDto> Handle(AddFeatherDeviceCommand request, CancellationToken cancellationToken)
     {
-        var itemToAdd = _mapper.Map<FeatherDevice>(request.device);
+        var itemToAdd = _mapper.Map<FeatherDevice>(request.FeatherDevice);
         var repo = _unitOfWork.GetRepository<FeatherDevice>();
 
         await repo.AddAsync(itemToAdd);

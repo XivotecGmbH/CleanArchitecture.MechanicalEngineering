@@ -27,7 +27,6 @@
     <PackageVersion Include="CommunityToolkit.Maui" Version="7.0.1" />
     <PackageVersion Include="Microsoft.Maui.Controls" Version="8.0.7" />
     <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
-    <PackageVersion Include="Xivotec.XivoBlue.MeadowSdk" Version="1.0.6" />
     <!-- Testing -->
     <PackageVersion Include="FluentAssertions" Version="6.12.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />

@@ -2,10 +2,11 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.Logging;
+using Xivotec.CleanArchitecture.Application.Common.Recipe;
+using Xivotec.CleanArchitecture.Application.Common.Recipe.Interface;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;
-using Xivotec.CleanArchitecture.Application.RecipeFeature;
-using Xivotec.CleanArchitecture.Application.RecipeFeature.Dtos;
-using Xivotec.CleanArchitecture.Infrastructure.Exceptions;
+using Xivotec.CleanArchitecture.Application.FeatherRecipeFeature.Dtos;
+using Xivotec.CleanArchitecture.Application.FeatherRecipeFeature.Exceptions;
 using Xivotec.CleanArchitecture.Presentation.Core.Messages;
 using Xivotec.CleanArchitecture.Presentation.Core.Services.Navigation;
 
@@ -107,6 +108,12 @@ public partial class FeatherDeviceRecipeDetailViewModel : ViewModelBase,
     }
 
     public void Receive(FilePathApprovedMessage message) => Task.Run(async () => await ImportRecipeAsync(message.Value));
+
+    public override Task PageAppearing()
+    {
+        ResetInputEntries();
+        return base.PageAppearing();
+    }
 
     protected override async Task ApplyNavigationValues(NavigationMessageDto dto)
     {

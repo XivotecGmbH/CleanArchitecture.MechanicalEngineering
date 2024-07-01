@@ -2,7 +2,7 @@
 <controls:HeaderFooterPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Recipe;assembly=Xivotec.CleanArchitecture.Presentation.Core"
-             xmlns:dataTypes="clr-namespace:Xivotec.CleanArchitecture.Application.RecipeFeature.Dtos;assembly=Xivotec.CleanArchitecture.Application"
+             xmlns:dataTypes="clr-namespace:Xivotec.CleanArchitecture.Application.Common.Recipe;assembly=Xivotec.CleanArchitecture.Application"
              xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
              x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.Recipe.RecipeControlPage"
              x:DataType="viewModels:RecipeControlViewModel">
@@ -11,7 +11,7 @@
         <Label Text="Recipes" FontSize="Medium" />
 
         <HorizontalStackLayout Spacing="30">
-            <Picker x:Name="Picker" WidthRequest="200" BackgroundColor="DimGrey" 
+            <Picker WidthRequest="200" BackgroundColor="DimGrey" 
                     ItemsSource="{Binding DeviceRecipeNames}" 
                     SelectedItem="{Binding SelectedItem}"/>
             <ImageButton

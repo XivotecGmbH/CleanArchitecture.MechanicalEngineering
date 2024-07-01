@@ -1,5 +1,5 @@
-﻿using Xivotec.CleanArchitecture.Application.RecipeFeature.Dtos;
-using Xivotec.CleanArchitecture.Infrastructure.Exceptions;
+﻿using Xivotec.CleanArchitecture.Application.Common.Recipe;
+using Xivotec.CleanArchitecture.Application.FeatherRecipeFeature.Exceptions;
 
 namespace Xivotec.CleanArchitecture.Infrastructure.Recipe.Interface;
 

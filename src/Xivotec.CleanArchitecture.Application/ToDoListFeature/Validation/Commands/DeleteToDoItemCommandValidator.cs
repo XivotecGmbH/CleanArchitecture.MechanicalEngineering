@@ -10,6 +10,6 @@ public class DeleteToDoItemCommandValidator : AbstractValidator<DeleteToDoItemCo
 {
     public DeleteToDoItemCommandValidator()
     {
-        RuleFor(item => item.item.Id).NotEmpty();
+        RuleFor(item => item.Item.Id).NotEmpty();
     }
 }

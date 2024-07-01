@@ -27,7 +27,7 @@
 
 [![Website][website-shield]][website-url] [![Instagram][instagram-shield]][instagram-url] [![LinkedIn][linkedin-shield]][linkedin-url]
 
-The goal of this template is to provide a straightforward and efficient approach for application development in the area of mechinal engineering, leveraging the power of Clean Architecture.
+The goal of this template is to provide a straightforward and efficient approach for application development in the area of mechanical engineering, leveraging the power of Clean Architecture.
 Using this template, you can easily create a multi platform app for communicating with multiple hardware devices, while adhering to the core principles of Clean Architecture.
 
 ## Getting Started
@@ -55,6 +55,7 @@ dotnet new xt-came-sln -n <YourProjectName>
 
 Because .NET MAUI is packaged by default, `dotnet run` won't work.  
 Instead, open your solution in Visual Studio directly and run it from there.
+You may need to run `dotnet workload update` via the command line or a rebuild action in Visual Studio if build errors occur.
 
 
 ## Database
@@ -63,6 +64,11 @@ The template is configured to use PostgreSQL as a database provider by default. 
 in the `Presentation` project `MauiProgram.cs` file and the `Infrastructure.PostgreSQLPort` project itself with a corresponding implementation.
 
 The database connection string is set in the `appsettings.json` file in the `Presentation` project.
+To start the database with default settings, run:
+
+```bash
+docker run -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -p 5432:5432 postgres:latest
+```
 
 Once you run the application, the database will be automatically created (if necessary) and the latest migrations will be applied.
 

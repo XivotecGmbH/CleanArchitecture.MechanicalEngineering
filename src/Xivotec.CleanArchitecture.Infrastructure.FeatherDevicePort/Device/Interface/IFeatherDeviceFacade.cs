@@ -1,4 +1,5 @@
-﻿using Xivotec.CleanArchitecture.Domain.FeatherDeviceAggregate.Enums;
+﻿using Xivotec.CleanArchitecture.Application.Common.Recipe;
+using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;
 
 namespace Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.Device.Interface;
 public interface IFeatherDeviceFacade
@@ -25,5 +26,9 @@ public interface IFeatherDeviceFacade
 
     Task ContinueAsync();
 
-    ConnectionState GetConnectionSate();
+    public Task LoadRecipeAsync(XivotecRecipeDto recipe);
+
+    public Task<XivotecRecipeDto> GetCurrentRecipeAsync();
+
+    ConnectionStateDto GetConnectionSate();
 }

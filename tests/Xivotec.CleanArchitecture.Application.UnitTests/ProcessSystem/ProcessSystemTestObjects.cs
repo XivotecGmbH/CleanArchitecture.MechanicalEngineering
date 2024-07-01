@@ -1,5 +1,5 @@
-﻿using Xivotec.CleanArchitecture.Application.Processes.Common;
-using Xivotec.CleanArchitecture.Application.Processes.Common.Interfaces;
+﻿using Xivotec.CleanArchitecture.Application.Common.Process;
+using Xivotec.CleanArchitecture.Application.Common.Process.Interfaces;
 
 namespace Xivotec.CleanArchitecture.Application.UnitTests.ProcessSystem;
 

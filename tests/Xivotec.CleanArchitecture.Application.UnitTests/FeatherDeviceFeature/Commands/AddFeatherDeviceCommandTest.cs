@@ -13,9 +13,8 @@ public class AddFeatherDeviceCommandTest
 {
     private readonly IMapper _mapper = Substitute.For<IMapper>();
     private readonly IUnitOfWork _unitOfWork = Substitute.For<IUnitOfWork>();
-
+    private readonly IRepository<FeatherDevice> _featherDeviceRepository = Substitute.For<IRepository<FeatherDevice>>();
     private readonly FeatherDeviceFeatureTestObjects _testObjects;
-
     private readonly AddFeatherDeviceHandler _sut;
 
     public AddFeatherDeviceCommandTest()
@@ -30,11 +29,9 @@ public class AddFeatherDeviceCommandTest
     public async Task Handle_ShouldReturnNewFeatherDevice_WhenDevicePresent()
     {
         //Arrange
-        var repo = Substitute.For<IRepository<FeatherDevice>>();
-
         _mapper.Map<FeatherDevice>(Arg.Is(_testObjects.FeatherDeviceDto)).Returns(_testObjects.FeatherDevices[0]);
         _mapper.Map<FeatherDeviceDto>(Arg.Is(_testObjects.FeatherDevices[0])).Returns(_testObjects.FeatherDeviceDto);
-        _unitOfWork.GetRepository<FeatherDevice>().Returns(repo);
+        _unitOfWork.GetRepository<FeatherDevice>().Returns(_featherDeviceRepository);
 
         //Act
         var result = await _sut.Handle(new AddFeatherDeviceCommand(_testObjects.FeatherDeviceDto), CancellationToken.None);
@@ -43,6 +40,6 @@ public class AddFeatherDeviceCommandTest
         result.Should().NotBeNull();
         result.Should().BeEquivalentTo(_testObjects.FeatherDeviceDto);
 
-        await repo.Received(1).AddAsync(_testObjects.FeatherDevices[0]);
+        await _featherDeviceRepository.Received(1).AddAsync(_testObjects.FeatherDevices[0]);
     }
 }

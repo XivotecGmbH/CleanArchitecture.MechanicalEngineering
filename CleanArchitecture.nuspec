@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
 
   <metadata>
-    <id>XivoBlue.MechanicalEngineering.Template</id>
-    <version>2.0.1</version>
-    <title>Clean Architecture .NET Solution Template For Mechanical Engineering</title>
+    <id>XivoBlue.CleanArchitecture.MechanicalEngineering.Template</id>
+    <version>2.1.0</version>
+    <title>Clean Architecture Template For Mechanical Engineering</title>
     <authors>Xivotec GmbH</authors>
 	
     <description>
-		Clean Architecture Solution Template for mechanical engineering.
+		Clean Architecture .NET Solution Template For Mechanical Engineering.
 	</description>
 	
     <summary>

@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Xivotec.CleanArchitecture.Application.Processes.Common;
+using Xivotec.CleanArchitecture.Application.Common.Process;
 using Xunit;
 
 namespace Xivotec.CleanArchitecture.Application.UnitTests.ProcessSystem;

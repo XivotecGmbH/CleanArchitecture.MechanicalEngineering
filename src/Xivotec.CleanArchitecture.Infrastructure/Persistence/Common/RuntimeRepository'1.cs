@@ -46,7 +46,7 @@ public abstract class RuntimeRepository<TEntity>
     /// <inheritdoc cref="IRepository{TEntity}.GetAllAsync"/>
     public async Task<List<TEntity>> GetAllAsync() => await Task.FromResult(_list);
 
-    /// <inheritdoc cref="IRepository{TEntity}.GetByIdAsync(TId)"/>
+    /// <inheritdoc cref="IRepository{TEntity}.GetByIdAsync(Guid)"/>
     public async Task<TEntity> GetByIdAsync(Guid id)
     {
         try

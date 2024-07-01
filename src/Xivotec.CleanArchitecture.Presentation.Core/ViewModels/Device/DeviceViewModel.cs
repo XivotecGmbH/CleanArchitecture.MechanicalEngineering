@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.Logging;
 using System.Collections.ObjectModel;
-using Xivotec.CleanArchitecture.Application.Services.Device;
+using Xivotec.CleanArchitecture.Application.Common.Device.Interface;
 using Xivotec.CleanArchitecture.Presentation.Core.Messages;
 using Xivotec.CleanArchitecture.Presentation.Core.Services.Navigation;
 
@@ -20,7 +20,7 @@ public partial class DeviceViewModel : ViewModelBase
     public DeviceViewModel(
         INavigationService navigation,
         ILogger<DeviceViewModel> logger,
-        IEnumerable<IDeviceService> services)
+        IEnumerable<IDeviceServiceBase> services)
         : base(navigation, logger)
     {
         AddImplementedServices(services);
@@ -45,7 +45,7 @@ public partial class DeviceViewModel : ViewModelBase
         WeakReferenceMessenger.Default.Send(new DevicePageAppearingMessage(true));
     }
 
-    private void AddImplementedServices(IEnumerable<IDeviceService> services)
+    private void AddImplementedServices(IEnumerable<IDeviceServiceBase> services)
     {
         foreach (var service in services)
         {

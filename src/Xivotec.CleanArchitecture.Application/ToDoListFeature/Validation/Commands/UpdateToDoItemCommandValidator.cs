@@ -10,7 +10,7 @@ public class UpdateToDoItemCommandValidator : AbstractValidator<UpdateToDoItemCo
 {
     public UpdateToDoItemCommandValidator()
     {
-        RuleFor(item => item.item.Id).NotEmpty();
-        RuleFor(item => item.item.Title).NotEmpty();
+        RuleFor(item => item.Item.Id).NotEmpty();
+        RuleFor(item => item.Item.Title).NotEmpty();
     }
 }

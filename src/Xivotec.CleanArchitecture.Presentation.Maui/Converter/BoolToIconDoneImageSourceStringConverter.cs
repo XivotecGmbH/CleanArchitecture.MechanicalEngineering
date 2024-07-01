@@ -9,7 +9,7 @@ public class BoolToIconDoneImageSourceStringConverter : IValueConverter
 
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        var isBoxChecked = (bool)value;
+        var isBoxChecked = (bool)value!;
         var isLightTheme = Microsoft.Maui.Controls.Application.Current!.UserAppTheme.Equals(AppTheme.Light);
 
         return isBoxChecked switch
@@ -22,6 +22,6 @@ public class BoolToIconDoneImageSourceStringConverter : IValueConverter
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        return ((string)value).Equals(IconDoneLightTheme) || ((string)value).Equals(IconDoneDarkTheme);
+        return (((string)value)!).Equals(IconDoneLightTheme) || ((string)value).Equals(IconDoneDarkTheme);
     }
 }

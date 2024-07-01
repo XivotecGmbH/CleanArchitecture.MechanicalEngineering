@@ -9,8 +9,8 @@ namespace Xivotec.CleanArchitecture.Application.ToDoListFeature.Commands;
 /// <summary>
 /// Command which updates the requested <see cref="ToDoItemDto"/> in the repository.
 /// </summary>
-/// <param name="item">The <see cref="ToDoListDto"/> to be updated.</param>
-public record UpdateToDoItemCommand(ToDoItemDto item) : IRequest;
+/// <param name="Item">The <see cref="ToDoListDto"/> to be updated.</param>
+public record UpdateToDoItemCommand(ToDoItemDto Item) : IRequest;
 
 public class UpdateToDoItemHandler : IRequestHandler<UpdateToDoItemCommand>
 {
@@ -25,7 +25,7 @@ public class UpdateToDoItemHandler : IRequestHandler<UpdateToDoItemCommand>
 
     public async Task Handle(UpdateToDoItemCommand request, CancellationToken cancellationToken)
     {
-        var itemToUpdate = _mapper.Map<ToDoItem>(request.item);
+        var itemToUpdate = _mapper.Map<ToDoItem>(request.Item);
         var repo = _unitOfWork.GetRepository<ToDoItem>();
 
         await repo.UpdateAsync(itemToUpdate);

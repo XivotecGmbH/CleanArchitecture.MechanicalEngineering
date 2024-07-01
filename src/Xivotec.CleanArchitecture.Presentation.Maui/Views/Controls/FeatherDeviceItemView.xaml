@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dataTypes="clr-namespace:Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;assembly=Xivotec.CleanArchitecture.Application"
              xmlns:controlViewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Controls;assembly=Xivotec.CleanArchitecture.Presentation.Core"
-             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls.FeatherDeviceItemView"
              x:DataType="controlViewModels:FeatherDeviceItemViewModel">
 

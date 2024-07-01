@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
-using Xivotec.CleanArchitecture.Application.Processes.Common.Interfaces;
-using Xivotec.CleanArchitecture.Application.Processes.FeatherDeviceProcess.ProcessDefinitions;
+using Xivotec.CleanArchitecture.Application.Common.Process.Interfaces;
+using Xivotec.CleanArchitecture.Application.FeatherProcessFeature.ProcessDefinitions;
 using Xivotec.CleanArchitecture.Presentation.Core.Services.Navigation;
 
 namespace Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Processes;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Text.Json;
-using Xivotec.CleanArchitecture.Application.RecipeFeature.Dtos;
+using Xivotec.CleanArchitecture.Application.Common.Recipe;
 using Xivotec.CleanArchitecture.Infrastructure.Recipe.Interface;
 
 namespace Xivotec.CleanArchitecture.Infrastructure.Recipe;

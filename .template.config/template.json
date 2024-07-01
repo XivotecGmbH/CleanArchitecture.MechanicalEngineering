@@ -8,8 +8,7 @@
 	],
 	"name": "Clean Architecture .NET Solution Template For Mechanical Engineering",
 	"description": "Adapting Clean Architecture To Connect And Communicate With Hardware Devices",
-	"identity": "Xivotec.CleanArchitecture.MechanicalEngineering.Template",
-	"groupIdentity": "Xivotec.Templates.MechanicalEngineering",
+	"identity": "XivoBlue.CleanArchitecture.MechanicalEngineering.Template",
 	"shortName": "xt-came-sln",
 	"tags": 
 	{

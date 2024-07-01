@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Xivotec.CleanArchitecture.Application\Xivotec.CleanArchitecture.Application.csproj" />
     <ProjectReference Include="..\..\src\Xivotec.CleanArchitecture.Domain\Xivotec.CleanArchitecture.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort\Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,9 +3,9 @@ using CommunityToolkit.Mvvm.Input;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System.Collections.ObjectModel;
-using Xivotec.CleanArchitecture.Application.RecipeFeature;
-using Xivotec.CleanArchitecture.Application.RecipeFeature.Dtos;
-using Xivotec.CleanArchitecture.Application.RecipeFeature.Queries;
+using Xivotec.CleanArchitecture.Application.Common.Recipe;
+using Xivotec.CleanArchitecture.Application.Common.Recipe.Interface;
+using Xivotec.CleanArchitecture.Application.FeatherRecipeFeature.Queries;
 using Xivotec.CleanArchitecture.Presentation.Core.Services.Navigation;
 using Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Recipe.FeatherDevice;
 

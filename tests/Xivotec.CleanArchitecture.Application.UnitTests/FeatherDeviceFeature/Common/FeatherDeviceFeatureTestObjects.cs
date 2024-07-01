@@ -1,4 +1,4 @@
-﻿using Xivotec.CleanArchitecture.Application.Common.Device;
+﻿using Xivotec.CleanArchitecture.Application.Common.Recipe;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;
 using Xivotec.CleanArchitecture.Domain.FeatherDeviceAggregate.Entities;
 using Xivotec.CleanArchitecture.Domain.FeatherDeviceAggregate.Enums;
@@ -31,6 +31,21 @@ internal class FeatherDeviceFeatureTestObjects
             Name = "DeviceOne",
             ComPort= "43",
             ConnectionState = ConnectionState.Disconnected
+        }
+    };
+
+    public readonly XivotecRecipeDto XivotecRecipeDto = new()
+    {
+        Id = Guid.NewGuid(),
+        Name = "RecipeOne",
+        FeatherDeviceRecipe = new()
+        {
+            Id = Guid.NewGuid(),
+            Name = "FeatherRecipeOne",
+            LedColor = LedColorDto.Green,
+            Interval = 1,
+            IsDisplaySwitchedOn = true,
+            IsLedSwitchedOn = true
         }
     };
 }

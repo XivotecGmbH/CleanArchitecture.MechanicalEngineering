@@ -37,7 +37,7 @@ public static class MauiProgram
     private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
     {
         var ex = e.ExceptionObject as Exception;
-        var errorMessage = string.Format("An unhandled exception occurred: {0}", ex.Message);
+        var errorMessage = $"An unhandled exception occurred: {ex!.Message}";
 
         // Only log unhandled exception for now. No application shut down.
         Log.Error(errorMessage, ex);

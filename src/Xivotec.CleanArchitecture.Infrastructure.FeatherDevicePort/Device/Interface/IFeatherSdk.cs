@@ -1,5 +1,5 @@
-﻿using Xivotec.CleanArchitecture.Application.RecipeFeature.Dtos;
-using Xivotec.CleanArchitecture.Domain.FeatherDeviceAggregate.Enums;
+﻿using Xivotec.CleanArchitecture.Application.Common.Recipe;
+using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;
 using Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.Device.Sdk;
 
 namespace Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.Device.Interface;
@@ -13,7 +13,7 @@ public interface IFeatherSdk
     /// <summary>
     /// Represents the current device connection state.
     /// </summary>
-    public ConnectionState ConnectionState { get; }
+    public ConnectionStateDto ConnectionState { get; }
 
     /// <summary>
     /// Init the device.
@@ -45,7 +45,7 @@ public interface IFeatherSdk
     /// Get the currently operating recipe from the device.
     /// </summary>
     /// <returns>The completed Task.</returns>
-    public Task GetCurrentRecipe();
+    public Task<XivotecRecipeDto> GetCurrentRecipe();
 
     /// <summary>
     /// Start a demo operation on the device.
@@ -128,7 +128,7 @@ public interface IFeatherSdk
     /// <summary>
     /// Get all pending device notifications.
     /// </summary>
-    /// <returns>A dictionary containing all un-acknowledged device notifications. TODO flo fragen</returns>
+    /// <returns>A dictionary containing all un-acknowledged device notifications.</returns>
     public Task<Dictionary<int, FeatherSdkNotification>> GetNotifications();
 
     /// <summary>

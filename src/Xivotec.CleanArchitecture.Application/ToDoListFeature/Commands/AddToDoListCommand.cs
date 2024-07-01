@@ -9,8 +9,8 @@ namespace Xivotec.CleanArchitecture.Application.ToDoListFeature.Commands;
 /// <summary>
 /// Command which saves a <see cref="ToDoListDto"/> to the repository.
 /// </summary>
-/// <param name="item">The <see cref="ToDoListDto"/> to be saved.</param>
-public record AddToDoListCommand(ToDoListDto item) : IRequest<ToDoListDto>;
+/// <param name="Item">The <see cref="ToDoListDto"/> to be saved.</param>
+public record AddToDoListCommand(ToDoListDto Item) : IRequest<ToDoListDto>;
 
 public class AddToDoListHandler : IRequestHandler<AddToDoListCommand, ToDoListDto>
 {
@@ -25,10 +25,10 @@ public class AddToDoListHandler : IRequestHandler<AddToDoListCommand, ToDoListDt
 
     public async Task<ToDoListDto> Handle(AddToDoListCommand request, CancellationToken cancellationToken)
     {
-        var itemToAdd = _mapper.Map<ToDoList>(request.item);
+        var itemToAdd = _mapper.Map<ToDoList>(request.Item);
         var repo = _unitOfWork.GetRepository<ToDoList>();
 
         await repo.AddAsync(itemToAdd);
-        return request.item;
+        return request.Item;
     }
 }

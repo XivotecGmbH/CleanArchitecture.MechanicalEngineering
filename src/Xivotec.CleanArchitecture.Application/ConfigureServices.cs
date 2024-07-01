@@ -4,8 +4,8 @@ using MediatR.Pipeline;
 using System.Reflection;
 using Xivotec.CleanArchitecture.Application.Common.Behaviors;
 using Xivotec.CleanArchitecture.Application.Common.DependencyInjection;
-using Xivotec.CleanArchitecture.Application.Processes;
-using Xivotec.CleanArchitecture.Application.Processes.Common.Interfaces;
+using Xivotec.CleanArchitecture.Application.Common.Process;
+using Xivotec.CleanArchitecture.Application.Common.Process.Interfaces;
 using Xivotec.CleanArchitecture.Application.Services.DomainDispatcher;
 
 namespace Microsoft.Extensions.DependencyInjection;

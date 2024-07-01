@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
-using Xivotec.CleanArchitecture.Application.RecipeFeature.Dtos;
-using Xivotec.CleanArchitecture.Infrastructure.Exceptions;
+using Xivotec.CleanArchitecture.Application.Common.Recipe;
+using Xivotec.CleanArchitecture.Application.FeatherRecipeFeature.Exceptions;
 using Xivotec.CleanArchitecture.Infrastructure.Recipe.Interface;
 
 namespace Xivotec.CleanArchitecture.Infrastructure.Recipe;

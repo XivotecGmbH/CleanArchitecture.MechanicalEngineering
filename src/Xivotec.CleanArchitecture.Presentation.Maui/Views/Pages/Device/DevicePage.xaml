@@ -10,7 +10,7 @@
         <Label Text="Devices" FontSize="Medium" />
 
         <HorizontalStackLayout Spacing="30">
-            <Picker x:Name="picker" WidthRequest="200" 
+            <Picker WidthRequest="200" 
                     BackgroundColor="DimGrey" 
                     ItemsSource="{Binding ServiceNames}" 
                     SelectedItem="{Binding SelectedItem}"/>

@@ -1,13 +1,13 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using System.Drawing;
-using Xivotec.CleanArchitecture.Application.Common.Device;
+using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Commands;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;
-using Xivotec.CleanArchitecture.Application.Services.Device;
-using Xivotec.CleanArchitecture.Infrastructure.Messages.ConnectionState;
-using Xivotec.CleanArchitecture.Infrastructure.Messages.Data;
+using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Messages;
+using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Queries;
 using Xivotec.CleanArchitecture.Presentation.Core.Messages;
 using Xivotec.CleanArchitecture.Presentation.Core.Services.Navigation;
 
@@ -19,6 +19,7 @@ public partial class FeatherDeviceControlViewModel : ViewModelBase,
     IRecipient<TemperatureDataChangedMessage>,
     IRecipient<LumenDataChangedMessage>
 {
+    private readonly IMediator _mediator;
     private const string NotSelected = "Not selected";
 
     [ObservableProperty]
@@ -51,40 +52,38 @@ public partial class FeatherDeviceControlViewModel : ViewModelBase,
     [ObservableProperty]
     private string _lumenValue = string.Empty;
 
-    private readonly IFeatherDeviceService _featherDeviceService;
-
     public FeatherDeviceControlViewModel(
         INavigationService navigation,
-        IFeatherDeviceService featherDeviceService,
-        ILogger<FeatherDeviceControlViewModel> logger)
+        ILogger<FeatherDeviceControlViewModel> logger,
+        IMediator mediator)
         : base(navigation, logger)
     {
-        _featherDeviceService = featherDeviceService;
+        _mediator = mediator;
     }
 
     [RelayCommand]
-    public async Task ConnectAsync() => await _featherDeviceService.ConnectAsync(FeatherDevice);
+    public async Task ConnectAsync() => await _mediator.Send(new ConnectFeatherDeviceCommand(FeatherDevice));
 
     [RelayCommand]
-    public async Task DisconnectAsync() => await _featherDeviceService.DisconnectAsync(FeatherDevice);
+    public async Task DisconnectAsync() => await _mediator.Send(new DisconnectFeatherDeviceCommand(FeatherDevice));
 
     [RelayCommand]
     public async Task StartAsync()
     {
-        await _featherDeviceService.StartAsync(FeatherDevice);
+        await _mediator.Send(new StartFeatherDeviceCommand(FeatherDevice));
         await StartTemperatureDataStream();
         await StartDistanceDataStream();
         await StartLumenDataStream();
     }
 
     [RelayCommand]
-    public async Task StopAsync() => await _featherDeviceService.StopAsync(FeatherDevice);
+    public async Task StopAsync() => await _mediator.Send(new StopFeatherDeviceCommand(FeatherDevice));
 
     [RelayCommand]
-    public async Task PauseAsync() => await _featherDeviceService.PauseAsync(FeatherDevice);
+    public async Task PauseAsync() => await _mediator.Send(new PauseFeatherDeviceCommand(FeatherDevice));
 
     [RelayCommand]
-    public async Task ContinueAsync() => await _featherDeviceService.ContinueAsync(FeatherDevice);
+    public async Task ContinueAsync() => await _mediator.Send(new ContinueFeatherDeviceCommand(FeatherDevice));
 
 
     public void Receive(ConnectionStateChangedMessage message) => UpdateConnectionState(message.Value ? ConnectionStateDto.Connected : ConnectionStateDto.Disconnected);
@@ -99,7 +98,7 @@ public partial class FeatherDeviceControlViewModel : ViewModelBase,
     {
         FeatherDevice = (FeatherDeviceDto)dto.Value;
 
-        var state = await _featherDeviceService.GetConnectionStateAsync(FeatherDevice);
+        var state = await _mediator.Send(new GetConnectionStateFeatherDeviceQuery(FeatherDevice));
         UpdateConnectionState(state);
     }
 
@@ -116,7 +115,7 @@ public partial class FeatherDeviceControlViewModel : ViewModelBase,
     {
         if (IsLumenDataSelected)
         {
-            await _featherDeviceService.StartLumenDataReceivingAsync(FeatherDevice);
+            await _mediator.Send(new StartLumenDataReceivingFeatherDeviceCommand(FeatherDevice));
         }
         else
         {
@@ -128,7 +127,7 @@ public partial class FeatherDeviceControlViewModel : ViewModelBase,
     {
         if (IsDistanceDataSelected)
         {
-            await _featherDeviceService.StartDistanceDataReceivingAsync(FeatherDevice);
+            await _mediator.Send(new StartDistanceDataReceivingFeatherDeviceCommand(FeatherDevice));
         }
         else
         {
@@ -140,7 +139,7 @@ public partial class FeatherDeviceControlViewModel : ViewModelBase,
     {
         if (IsTempDataSelected)
         {
-            await _featherDeviceService.StartTemperatureDataReceivingAsync(FeatherDevice);
+            await _mediator.Send(new StartTemperatureDataReceivingFeatherDeviceCommand(FeatherDevice));
         }
         else
         {

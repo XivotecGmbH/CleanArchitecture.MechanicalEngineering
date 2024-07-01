@@ -6,14 +6,12 @@ using System.Timers;
 using Xivotec.CleanArchitecture.Application.Common.Persistence;
 using Xivotec.CleanArchitecture.Application.Messages;
 using Xivotec.CleanArchitecture.Application.Services.Time;
-using Xivotec.CleanArchitecture.Infrastructure.Messages.Error;
 using Xivotec.CleanArchitecture.Presentation.Core.Services.Navigation;
 
 namespace Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Controls;
 
 public partial class BannerViewViewModel : ViewModelBase,
     IRecipient<ErrorMessage>,
-    IRecipient<ErrorReceivedMessage>,
     IRecipient<NotificationMessage>
 {
     [ObservableProperty]
@@ -54,9 +52,6 @@ public partial class BannerViewViewModel : ViewModelBase,
     }
 
     public void Receive(ErrorMessage message)
-        => ErrorEventMessage = message.Value;
-
-    public void Receive(ErrorReceivedMessage message)
         => ErrorEventMessage = message.Value;
 
     public void Receive(NotificationMessage message)

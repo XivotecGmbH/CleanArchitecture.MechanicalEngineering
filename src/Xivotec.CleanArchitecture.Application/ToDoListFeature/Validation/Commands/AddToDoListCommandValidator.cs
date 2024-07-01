@@ -10,8 +10,8 @@ public sealed class AddToDoListCommandValidator : AbstractValidator<AddToDoListC
 {
     public AddToDoListCommandValidator()
     {
-        RuleFor(x => x.item.Id).NotEmpty();
-        RuleFor(x => x.item.Title).NotEmpty();
-        RuleFor(x => x.item.Title).MaximumLength(100);
+        RuleFor(x => x.Item.Id).NotEmpty();
+        RuleFor(x => x.Item.Title).NotEmpty();
+        RuleFor(x => x.Item.Title).MaximumLength(100);
     }
 }

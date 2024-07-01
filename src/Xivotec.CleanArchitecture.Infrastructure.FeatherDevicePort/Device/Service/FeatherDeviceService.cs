@@ -1,40 +1,30 @@
 using CommunityToolkit.Mvvm.Messaging;
-using MediatR;
-using Xivotec.CleanArchitecture.Application.Common.Device;
+using Xivotec.CleanArchitecture.Application.Common.Device.Interface;
 using Xivotec.CleanArchitecture.Application.Common.Persistence.Interfaces;
 using Xivotec.CleanArchitecture.Application.Exceptions;
-using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Commands;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;
-using Xivotec.CleanArchitecture.Application.Services.Device;
 using Xivotec.CleanArchitecture.Infrastructure.Exceptions;
+using Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.Device.Exceptions;
 using Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.Device.Facade;
 using Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.Device.Interface;
-using Xivotec.CleanArchitecture.Infrastructure.Messages.ConnectionState;
-using Xivotec.CleanArchitecture.Infrastructure.Messages.Data;
 
 namespace Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.Device.Service;
 
-public class FeatherDeviceService : IFeatherDeviceService,
-    IRecipient<DistanceDataReceivedMessage>,
-    IRecipient<LumenDataReceivedMessage>,
-    IRecipient<TemperatureDataReceivedMessage>
+public class FeatherDeviceService :
+    IDeviceService<FeatherDeviceDto>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IFeatherDeviceFactory _featherDeviceFactory;
-    private readonly IMediator _mediator;
 
-    public FeatherDeviceService(IUnitOfWork unitOfWork,
-        IFeatherDeviceFactory featherDeviceFactory,
-        IMediator mediator)
+    public FeatherDeviceService(IFeatherDeviceFactory featherDeviceFactory, IUnitOfWork unitOfWork)
     {
-        _unitOfWork = unitOfWork;
         _featherDeviceFactory = featherDeviceFactory;
-        _mediator = mediator;
+        _unitOfWork = unitOfWork;
 
         WeakReferenceMessenger.Default.RegisterAll(this);
     }
 
-    public async Task InitialiseAsync(FeatherDeviceDto device)
+    public async Task InitializeAsync(FeatherDeviceDto device)
     {
         var repo = _unitOfWork.GetRepository<FeatherDeviceFacade>();
         var facade = _featherDeviceFactory.CreateFeatherDeviceFacade(device);
@@ -45,119 +35,160 @@ public class FeatherDeviceService : IFeatherDeviceService,
 
     public async Task DeinitializeAsync(FeatherDeviceDto device)
     {
-        var facade = await GetFacadeAsync(device);
+        var facade = await GetFacadeByIdAsync(device.Id);
         await facade.DisconnectAsync();
-        await DeleteFacadeAsync(device);
+        await DeleteFacadeByIdAsync(device.Id);
     }
 
     public async Task ConnectAsync(FeatherDeviceDto device)
     {
-        var facade = await GetFacadeAsync(device);
-
+        var facade = await GetFacadeByIdAsync(device.Id);
         await facade.ConnectAsync();
-        device.ConnectionState = ConnectionStateDto.Connected;
-        await _mediator.Send(new UpdateFeatherDeviceCommand(device));
-        WeakReferenceMessenger.Default.Send(new ConnectionStateChangedMessage(true));
     }
 
     public async Task DisconnectAsync(FeatherDeviceDto device)
     {
-        var facade = await GetFacadeAsync(device);
-
+        var facade = await GetFacadeByIdAsync(device.Id);
         await facade.DisconnectAsync();
-        device.ConnectionState = ConnectionStateDto.Disconnected;
-        await _mediator.Send(new UpdateFeatherDeviceCommand(device));
-        WeakReferenceMessenger.Default.Send(new ConnectionStateChangedMessage(false));
     }
 
-    public async Task StartAsync(FeatherDeviceDto device)
+    public async Task ApplyConfigAsync(FeatherDeviceDto device)
     {
-        var facade = await GetFacadeAsync(device);
+        var facade = await GetFacadeByIdAsync(device.Id);
+
+        await facade.LoadRecipeAsync(device.Recipe);
+    }
+
+    public async Task<FeatherDeviceDto> GetCurrentConfigAsync(FeatherDeviceDto device)
+    {
+        var facade = await GetFacadeByIdAsync(device.Id);
+        device.Recipe = await facade.GetCurrentRecipeAsync();
+
+        return device;
+    }
+
+    public async Task WriteDataAsync(FeatherDeviceDto device)
+    {
+        switch (device.Action)
+        {
+            case FeatherDeviceActionsDto.Start:
+                await StartAsync(device);
+                break;
+            case FeatherDeviceActionsDto.Stop:
+                await StopAsync(device);
+                break;
+            case FeatherDeviceActionsDto.Pause:
+                await PauseAsync(device);
+                break;
+            case FeatherDeviceActionsDto.Continue:
+                await ContinueAsync(device);
+                break;
+            case FeatherDeviceActionsDto.StartTemperatureDataReceiving:
+                await StartTemperatureDataReceivingAsync(device);
+                break;
+            case FeatherDeviceActionsDto.StartDistanceDataReceiving:
+                await StartDistanceDataReceivingAsync(device);
+                break;
+            case FeatherDeviceActionsDto.StartLumenDataReceiving:
+                await StartLumenDataReceivingAsync(device);
+                break;
+            default:
+                throw new FeatherDeviceActionNotFoundException();
+        }
+    }
+
+    public async Task<FeatherDeviceDto> ReadDataAsync(FeatherDeviceDto device)
+    {
+        switch (device.Action)
+        {
+            case FeatherDeviceActionsDto.GetConnectionState:
+                device.ConnectionState = await GetConnectionStateAsync(device);
+                return device;
+            default:
+                throw new FeatherDeviceActionNotFoundException();
+        }
+    }
+
+    private async Task StartAsync(FeatherDeviceDto device)
+    {
+        var facade = await GetFacadeByIdAsync(device.Id);
 
         await facade.StartAsync();
     }
 
-    public async Task StartTemperatureDataReceivingAsync(FeatherDeviceDto device)
+    private async Task StopAsync(FeatherDeviceDto device)
     {
-        var facade = await GetFacadeAsync(device);
-
-        await facade.StartTemperatureSensorDataStream();
-    }
-
-    public async Task StartDistanceDataReceivingAsync(FeatherDeviceDto device)
-    {
-        var facade = await GetFacadeAsync(device);
-
-        await facade.StartDistanceSensorDataStream();
-    }
-
-    public async Task StartLumenDataReceivingAsync(FeatherDeviceDto device)
-    {
-        var facade = await GetFacadeAsync(device);
-
-        await facade.StartLumenSensorDataStream();
-    }
-
-    public async Task StopAsync(FeatherDeviceDto device)
-    {
-        var facade = await GetFacadeAsync(device);
+        var facade = await GetFacadeByIdAsync(device.Id);
 
         await facade.StopAsync();
     }
 
-    public async Task PauseAsync(FeatherDeviceDto device)
+    private async Task PauseAsync(FeatherDeviceDto device)
     {
-        var facade = await GetFacadeAsync(device);
+        var facade = await GetFacadeByIdAsync(device.Id);
 
         await facade.PauseAsync();
     }
 
-    public async Task ContinueAsync(FeatherDeviceDto device)
+    private async Task ContinueAsync(FeatherDeviceDto device)
     {
-        var facade = await GetFacadeAsync(device);
+        var facade = await GetFacadeByIdAsync(device.Id);
 
         await facade.ContinueAsync();
     }
-    public async Task<ConnectionStateDto> GetConnectionStateAsync(FeatherDeviceDto device)
+
+    private async Task StartTemperatureDataReceivingAsync(FeatherDeviceDto device)
     {
-        var facade = await GetFacadeAsync(device);
-        return (ConnectionStateDto)facade.GetConnectionSate();
+        var facade = await GetFacadeByIdAsync(device.Id);
+
+        await facade.StartTemperatureSensorDataStream();
     }
 
-    public void Receive(DistanceDataReceivedMessage message)
-        => WeakReferenceMessenger.Default.Send(new DistanceDataChangedMessage(message.Value));
+    private async Task StartDistanceDataReceivingAsync(FeatherDeviceDto device)
+    {
+        var facade = await GetFacadeByIdAsync(device.Id);
 
-    public void Receive(LumenDataReceivedMessage message)
-        => WeakReferenceMessenger.Default.Send(new LumenDataChangedMessage(message.Value));
+        await facade.StartDistanceSensorDataStream();
+    }
 
-    public void Receive(TemperatureDataReceivedMessage message)
-        => WeakReferenceMessenger.Default.Send(new TemperatureDataChangedMessage(message.Value));
+    private async Task StartLumenDataReceivingAsync(FeatherDeviceDto device)
+    {
+        var facade = await GetFacadeByIdAsync(device.Id);
 
-    private async Task<FeatherDeviceFacade> GetFacadeAsync(FeatherDeviceDto device)
+        await facade.StartLumenSensorDataStream();
+    }
+
+    private async Task<ConnectionStateDto> GetConnectionStateAsync(FeatherDeviceDto device)
+    {
+        var facade = await GetFacadeByIdAsync(device.Id);
+        return facade.GetConnectionSate();
+    }
+
+    private async Task<FeatherDeviceFacade> GetFacadeByIdAsync(Guid id)
     {
         var repo = _unitOfWork.GetRepository<FeatherDeviceFacade>();
         try
         {
-            return await repo.GetByIdAsync(device.Id);
+            return await repo.GetByIdAsync(id);
         }
         catch (ItemNotFoundException)
         {
-            throw new FacadeNotFoundException($"No facade found with ID {device.Id}");
+            throw new FacadeNotFoundException($"No facade found with ID {id}");
         }
     }
 
-    private async Task DeleteFacadeAsync(FeatherDeviceDto device)
+    private async Task DeleteFacadeByIdAsync(Guid id)
     {
         var repo = _unitOfWork.GetRepository<FeatherDeviceFacade>();
         try
         {
-            var deviceToDelete = await repo.GetByIdAsync(device.Id);
+            var deviceToDelete = await repo.GetByIdAsync(id);
             await deviceToDelete.DeinitializeAsync();
             await repo.DeleteAsync(deviceToDelete);
         }
         catch (ItemNotFoundException)
         {
-            throw new FacadeNotFoundException($"No facade found with ID {device.Id}");
+            throw new FacadeNotFoundException($"No facade found with ID {id}");
         }
     }
 }

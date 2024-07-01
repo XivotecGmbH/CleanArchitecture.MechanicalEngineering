@@ -1,9 +1,11 @@
 using Xivotec.CleanArchitecture.Application.Common.DependencyInjection;
+using Xivotec.CleanArchitecture.Application.Common.Device.Interface;
 using Xivotec.CleanArchitecture.Application.Common.Persistence.Interfaces;
+using Xivotec.CleanArchitecture.Application.Common.Recipe.Interface;
 using Xivotec.CleanArchitecture.Application.Notifications.Service;
-using Xivotec.CleanArchitecture.Application.RecipeFeature;
 using Xivotec.CleanArchitecture.Application.Services.PersistenceConfiguration;
 using Xivotec.CleanArchitecture.Application.Services.Time;
+using Xivotec.CleanArchitecture.Infrastructure.Device;
 using Xivotec.CleanArchitecture.Infrastructure.Notifications.Service;
 using Xivotec.CleanArchitecture.Infrastructure.Persistence;
 using Xivotec.CleanArchitecture.Infrastructure.Persistence.Common.Interfaces;
@@ -28,6 +30,7 @@ public static class ConfigureServices
         services.AddTransient<IRecipeImporter, RecipeImporter>();
         services.AddTransient<IRecipeExporter, RecipeExporter>();
         services.AddTransient<IRecipeService, RecipeService>();
+        services.AddTransient<IDeviceUnitOfWork, DeviceUnitOfWork>();
 
         return services;
     }

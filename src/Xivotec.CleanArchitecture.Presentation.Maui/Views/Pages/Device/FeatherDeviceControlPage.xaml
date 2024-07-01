@@ -5,12 +5,14 @@
              xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Device;assembly=Xivotec.CleanArchitecture.Presentation.Core"
              xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
              x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.Device.FeatherDeviceControlPage"
+             xmlns:converter="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Converter"
              x:DataType="viewModels:FeatherDeviceControlViewModel"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+            <converter:SystemColorToMauiColorConverter x:Key="SystemColorToMauiColorConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -26,7 +28,8 @@
                            VerticalTextAlignment="Center"
                            WidthRequest="200"/>
                         <CheckBox IsChecked="{Binding IsTempDataSelected}"
-                                  IsEnabled="{Binding IsDeviceConnected, Converter={StaticResource InvertedBoolConverter}}"/>
+                                  IsEnabled="{Binding IsDeviceConnected,
+                            Converter={StaticResource InvertedBoolConverter}}"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout Spacing="40">
@@ -34,7 +37,8 @@
                            VerticalTextAlignment="Center"
                            WidthRequest="200"/>
                         <CheckBox IsChecked="{Binding IsDistanceDataSelected}"
-                                  IsEnabled="{Binding IsDeviceConnected, Converter={StaticResource InvertedBoolConverter}}"/>
+                                  IsEnabled="{Binding IsDeviceConnected,
+                            Converter={StaticResource InvertedBoolConverter}}"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout Spacing="40">
@@ -42,7 +46,8 @@
                            VerticalTextAlignment="Center"
                            WidthRequest="200"/>
                         <CheckBox IsChecked="{Binding IsLumenDataSelected}"
-                                  IsEnabled="{Binding IsDeviceConnected, Converter={StaticResource InvertedBoolConverter}}"/>
+                                  IsEnabled="{Binding IsDeviceConnected,
+                            Converter={StaticResource InvertedBoolConverter}}"/>
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
 
@@ -50,7 +55,8 @@
                     <HorizontalStackLayout Spacing="20">
                         <Label Text="Connection State:" VerticalOptions="Center"/>
                         <Label Text="{Binding ConnectionState}" VerticalOptions="Center"/>
-                        <Ellipse Fill="{Binding ConnectionStateColor}" 
+                        <Ellipse Fill="{Binding ConnectionStateColor,
+                            Converter={StaticResource SystemColorToMauiColorConverter}}" 
                                  WidthRequest="25" 
                                  HeightRequest="25" 
                                  VerticalOptions="Center"/>

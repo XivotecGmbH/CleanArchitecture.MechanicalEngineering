@@ -1,7 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using Xivotec.CleanArchitecture.Application.Common.Persistence;
+using Xivotec.CleanArchitecture.Application.Common.Recipe;
+using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;
 using Xivotec.CleanArchitecture.Application.Messages;
-using Xivotec.CleanArchitecture.Domain.FeatherDeviceAggregate.Enums;
 using Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.Device.Interface;
 using Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.Device.Sdk;
 using Xivotec.CleanArchitecture.Infrastructure.Messages.Data;
@@ -60,12 +61,13 @@ public class FeatherDeviceFacade : RepositoryItem, IFeatherDeviceFacade
 
     public async Task ContinueAsync() => await _featherSdk.Continue();
 
+    public async Task LoadRecipeAsync(XivotecRecipeDto recipe) => await _featherSdk.LoadRecipe(recipe);
+
+    public async Task<XivotecRecipeDto> GetCurrentRecipeAsync() => await _featherSdk.GetCurrentRecipe();
+
     public async Task PauseAsync() => await _featherSdk.Pause();
 
-    public ConnectionState GetConnectionSate()
-    {
-        return _featherSdk.ConnectionState;
-    }
+    public ConnectionStateDto GetConnectionSate() => _featherSdk.ConnectionState;
 
     private void OnDeviceStreamDataReceived(object sender, FeatherSdkStreamData streamData)
     {
