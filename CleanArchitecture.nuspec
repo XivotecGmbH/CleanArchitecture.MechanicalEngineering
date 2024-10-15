@@ -12,7 +12,7 @@
 	</description>
 	
     <summary>
-		Adapting Clean Architecture To Connect And Communicate With Hardware Devices with Time series database and Angular
+		Adapting Clean Architecture To Connect And Communicate With Hardware Devices With The Influx Time Series Database And Angular Port
     </summary>
 	
     <releaseNotes>

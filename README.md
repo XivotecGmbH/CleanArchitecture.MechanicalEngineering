@@ -37,6 +37,7 @@ The easiest way to get started with this template is to install the [NuGet packa
 - Install the latest .NET 8.x SDK & Tools
 - Install the latest version of Visual Studio IDE
 - Install the latest .NET MAUI package
+- Install node.js
 - Install / have access to a PostgreSQL database (optional, see below)
 - Enable Developer Mode on your device (required for debugging .NET MAUI applications)
 
@@ -57,6 +58,8 @@ Because .NET MAUI is packaged by default, `dotnet run` won't work.
 Instead, open your solution in Visual Studio directly and run it from there.
 You may need to run `dotnet workload update` via the command line or a rebuild action in Visual Studio if build errors occur.
 
+## Angular
+Start the Xivotec.CleanArchitecture.Presentation.Angular.Server project. It uses the default port 4200. You can use the the Angular project in a browser of your choice with localhost:4200.
 
 ## Database
 
@@ -102,15 +105,21 @@ Our homepage is linked in the banners at the top.
 
 ## Known Error
 
-If an error with the message, that a specified AndroidManifest file can not be found, occurs, copy the file AndroidManifest.xml from the location `\src\<YourProjectName>.Presentation.Maui\Platforms\Android\` to the location `\src\<YourProjectName>.Presentation.Maui\`. You can remove the copied file after building.
+### MAUI
+If an error while starting .Net MAUI with the message, that a specified AndroidManifest file can not be found, occurs, copy the file AndroidManifest.xml from the location `\src\<YourProjectName>.Presentation.Maui\Platforms\Android\` to the location `\src\<YourProjectName>.Presentation.Maui\`. You can remove the copied file after building.
+
+### Angular
+If the error: "Micorosoft.AspNetCore.SpaProxy.SpaProxyLaunchManager[0] Couldn't start the SPA development server with command 'npm start'" appears, then delete the folder `node_modules` in `Xivotec.CleanArchitecture.Presentation.Angular.FrontEnd`. After that execute the command `npm install` at the exact location in the command line.
 
 ## Technologies Used
 
 Main technologies:
 * [.NET MAUI](https://learn.microsoft.com/en-us/dotnet/maui/)
+* [Angular](https://angular.dev/)
 * [CommunityToolkit.Maui](https://github.com/CommunityToolkit/Maui)
 * [CommunityToolkit.Mvvm](https://learn.microsoft.com/de-de/dotnet/communitytoolkit/mvvm/)
 * [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
+* [InluxDB] (https://www.influxdata.com/)
 * [MediatR](https://github.com/jbogard/MediatR)
 * [AutoMapper](https://automapper.org/)
 * [FluentValidation](https://fluentvalidation.net/)
