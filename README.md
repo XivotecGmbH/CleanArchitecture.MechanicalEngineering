@@ -119,7 +119,7 @@ Main technologies:
 * [CommunityToolkit.Maui](https://github.com/CommunityToolkit/Maui)
 * [CommunityToolkit.Mvvm](https://learn.microsoft.com/de-de/dotnet/communitytoolkit/mvvm/)
 * [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
-* [InluxDB] (https://www.influxdata.com/)
+* [InfluxDB](https://www.influxdata.com/)
 * [MediatR](https://github.com/jbogard/MediatR)
 * [AutoMapper](https://automapper.org/)
 * [FluentValidation](https://fluentvalidation.net/)
