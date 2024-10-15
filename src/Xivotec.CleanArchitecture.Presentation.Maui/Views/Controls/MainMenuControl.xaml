@@ -55,6 +55,14 @@
             WidthRequest="150"
             Command="{Binding NavigateToNotificationsCommand}"
             />
+            
+            <Button 
+                Text="TS Demo" 
+                ImageSource="tab_map.png"
+                HorizontalOptions="StartAndExpand"
+                WidthRequest="150"
+                Command="{Binding NavigateToTimeSeriesDemoCommand}"
+            />
 
         </VerticalStackLayout>
 

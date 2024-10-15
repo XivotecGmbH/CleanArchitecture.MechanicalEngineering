@@ -1,0 +1,49 @@
+:root {
+  /* main */
+  --primary-color: #512BD4;
+  --secondary-color: #DFD8F7;
+  --tertiary-color: #2B0B98;
+  /* color variations */
+  --gray-100: #E1E1E1;
+  --gray-200: #C8C8C8;
+  --gray-300: #ACACAC;
+  --gray-400: #919191;
+  --gray-500: #6E6E6E;
+  --gray-600: #404040;
+  --gray-900: #212121;
+  --gray-950: #141414;
+  /* input */
+  --background-color: white;
+  --font-color: #020202;
+  --header-footer-color: var(--primary-color);
+  --side-nav-color: var(--gray-100);
+  --button-color: var(--primary-color);
+  --button-font-color: white;
+  --listing-background-color: var(--gray-200);
+  --input-color: var(--gray-200);
+}
+
+.dark-theme {
+  /* main */
+  --primary-color: #512BD4;
+  --secondary-color: #DFD8F7;
+  --tertiary-color: #2B0B98;
+  /* variations */
+  --gray-100: #E1E1E1;
+  --gray-200: #C8C8C8;
+  --gray-300: #ACACAC;
+  --gray-400: #919191;
+  --gray-500: #6E6E6E;
+  --gray-600: #404040;
+  --gray-900: #212121;
+  --gray-950: #141414;
+  /* input */
+  --background-color: var(--gray-950);
+  --font-color: white;
+  --header-footer-color: var(--tertiary-color);
+  --side-nav-color: var(--gray-900);
+  --button-color: var(--gray-100);
+  --button-font-color: var(--tertiary-color);
+  --listing-background-color: var(--gray-900);
+  --input-color: var(--gray-200);
+}

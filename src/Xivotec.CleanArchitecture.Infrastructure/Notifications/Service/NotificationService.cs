@@ -12,12 +12,12 @@ namespace Xivotec.CleanArchitecture.Infrastructure.Notifications.Service;
 public class NotificationService : INotificationService
 {
     private readonly IMapper _mapper;
-    private readonly IRepository<Notification> _repository;
+    private readonly IRelationalRepository<Notification> _repository;
 
     public NotificationService(IUnitOfWork unitOfWork, IMapper mapper)
     {
         _mapper = mapper;
-        _repository = unitOfWork.GetRepository<Notification>();
+        _repository = unitOfWork.GetRelationalRepository<Notification>();
     }
 
     public async Task CreateNotification(NotificationDto notification)

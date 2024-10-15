@@ -60,7 +60,9 @@ You may need to run `dotnet workload update` via the command line or a rebuild a
 
 ## Database
 
-The template is configured to use PostgreSQL as a database provider by default. If you want to use another provider, you need to exchange `.RegisterPostgreSqlPortServices()`
+### PostgreSQL
+
+The template is configured to use PostgreSQL as a relational database provider by default. If you want to use another provider, you need to exchange `.RegisterPostgreSqlPortServices()`
 in the `Presentation` project `MauiProgram.cs` file and the `Infrastructure.PostgreSQLPort` project itself with a corresponding implementation.
 
 The database connection string is set in the `appsettings.json` file in the `Presentation` project.
@@ -70,7 +72,22 @@ To start the database with default settings, run:
 docker run -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -p 5432:5432 postgres:latest
 ```
 
-Once you run the application, the database will be automatically created (if necessary) and the latest migrations will be applied.
+Once you run the application, the database will be created automatically (if necessary) and the latest migrations will be applied.
+
+### InfluxDB
+
+The template uses the InfluxDB time series database by default. The implementation can be changed just like the relational database.
+
+The database connection properties are set in the `appsettings.json` file in the `Presentation` project.
+To start the database with default settings, run:
+
+```bash
+docker run -d --publish 8086:8086 influxdb:2.7.4
+```
+
+Afterwards, complete the initial setup via the InfluxDB UI, which is available via the exposed container port. After completion, fill in a valid InfluxDB API Token for the `InfluxToken` property in the `appsettings.json` file in the `Presentation` project. Be sure that the organization name in your InfluxDB setup matches the `InfluxOrg` property provided in the `appsettings.json` in the `Presentation` project.
+
+Once you run the application, the required buckets will be created automatically (if necessary).
 
 ## License
 

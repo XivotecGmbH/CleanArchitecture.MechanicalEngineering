@@ -26,7 +26,7 @@ public class AddToDoListHandler : IRequestHandler<AddToDoListCommand, ToDoListDt
     public async Task<ToDoListDto> Handle(AddToDoListCommand request, CancellationToken cancellationToken)
     {
         var itemToAdd = _mapper.Map<ToDoList>(request.Item);
-        var repo = _unitOfWork.GetRepository<ToDoList>();
+        var repo = _unitOfWork.GetRelationalRepository<ToDoList>();
 
         await repo.AddAsync(itemToAdd);
         return request.Item;

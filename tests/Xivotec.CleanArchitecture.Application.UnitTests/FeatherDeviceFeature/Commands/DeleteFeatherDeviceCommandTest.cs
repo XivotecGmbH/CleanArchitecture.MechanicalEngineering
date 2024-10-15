@@ -11,7 +11,7 @@ public class DeleteFeatherDeviceCommandTest
 {
     private readonly IMapper _mapper = Substitute.For<IMapper>();
     private readonly IUnitOfWork _unitOfWork = Substitute.For<IUnitOfWork>();
-    private readonly IRepository<FeatherDevice> _featherDeviceRepository = Substitute.For<IRepository<FeatherDevice>>();
+    private readonly IRelationalRepository<FeatherDevice> _featherDeviceRepository = Substitute.For<IRelationalRepository<FeatherDevice>>();
     private readonly FeatherDeviceFeatureTestObjects _testObjects;
 
     private readonly DeleteFeatherDeviceHandler _sut;
@@ -27,7 +27,7 @@ public class DeleteFeatherDeviceCommandTest
     {
         //Arrange
         _mapper.Map<FeatherDevice>(Arg.Is(_testObjects.FeatherDeviceDto)).Returns(_testObjects.FeatherDevices[0]);
-        _unitOfWork.GetRepository<FeatherDevice>().Returns(_featherDeviceRepository);
+        _unitOfWork.GetRelationalRepository<FeatherDevice>().Returns(_featherDeviceRepository);
 
         //Act
         await _sut.Handle(new DeleteFeatherDeviceCommand(_testObjects.FeatherDeviceDto), CancellationToken.None);

@@ -36,20 +36,30 @@ public sealed class UnitOfWork : IUnitOfWork
         _dataContext.Dispose();
     }
 
-    /// <inheritdoc cref="IUnitOfWork.GetRepository{TEntity}()"/>
-    public IRepository<TEntity> GetRepository<TEntity>() where TEntity : Entity
+    public IRelationalRepository<TEntity> GetRelationalRepository<TEntity>() where TEntity : Entity
     {
         var type = typeof(TEntity);
         if (_repositories.TryGetValue(type, out var repository))
         {
-            return (IRepository<TEntity>)repository;
+            return (IRelationalRepository<TEntity>)repository;
+        }
+
+        throw new RepositoryNotFoundException();
+    }
+
+    public ITimeSeriesRepository<TTimeSeriesEntry> GetTimeSeriesRepository<TTimeSeriesEntry>() where TTimeSeriesEntry : TimeSeriesEntry
+    {
+        var type = typeof(TTimeSeriesEntry);
+        if (_repositories.TryGetValue(type, out var repository))
+        {
+            return (ITimeSeriesRepository<TTimeSeriesEntry>)repository;
         }
 
         throw new RepositoryNotFoundException();
     }
 
     /// <summary>
-    /// Adds IRepository Type to the internal references.
+    /// Adds repository types for internal references.
     /// </summary>
     /// <param name="repo">Repository to add</param>
     private void AddRepositoryToDictionary(object repo)
@@ -63,7 +73,7 @@ public sealed class UnitOfWork : IUnitOfWork
     }
 
     /// <summary>
-    /// Returns the generictype TEntity of an <see cref="IRepository{TEntity}"/>
+    /// Returns the generic type TEntity of an <see cref="IRelationalRepository{TEntity}"/>
     /// if the repos implements it, null otherwise.
     /// </summary>
     /// <param name="repo">Repo to check.</param>
@@ -80,7 +90,7 @@ public sealed class UnitOfWork : IUnitOfWork
 
             var genType = intType.GetGenericTypeDefinition();
 
-            if (genType == typeof(IRepository<>))
+            if (genType == typeof(IRelationalRepository<>) || genType == typeof(ITimeSeriesRepository<>))
             {
                 return intType.GetGenericArguments()[0];
             }

@@ -27,7 +27,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort", "src\Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort\Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.csproj", "{8BD8E466-FE42-4E82-932F-68F2D5143B93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort", "src\Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort\Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.csproj", "{8BD8E466-FE42-4E82-932F-68F2D5143B93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xivotec.CleanArchitecture.Infrastructure.InfluxDbPort", "src\Xivotec.CleanArchitecture.Infrastructure.InfluxDbPort\Xivotec.CleanArchitecture.Infrastructure.InfluxDbPort.csproj", "{9A03675F-ED15-423B-9503-85EF3AB80565}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Xivotec.CleanArchitecture.Presentation.Angular.Frontend", "src\Xivotec.CleanArchitecture.Presentation.Angular.Frontend\Xivotec.CleanArchitecture.Presentation.Angular.Frontend.esproj", "{E32BE4BA-B38C-4240-B1C5-EF3EB04F9101}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xivotec.CleanArchitecture.Presentation.Angular.Server", "src\Xivotec.CleanArchitecture.Presentation.Angular.Server\Xivotec.CleanArchitecture.Presentation.Angular.Server.csproj", "{012D585F-B343-4689-9975-4D20C0B7AAB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +79,20 @@ Global
 		{8BD8E466-FE42-4E82-932F-68F2D5143B93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BD8E466-FE42-4E82-932F-68F2D5143B93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BD8E466-FE42-4E82-932F-68F2D5143B93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A03675F-ED15-423B-9503-85EF3AB80565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A03675F-ED15-423B-9503-85EF3AB80565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A03675F-ED15-423B-9503-85EF3AB80565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A03675F-ED15-423B-9503-85EF3AB80565}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E32BE4BA-B38C-4240-B1C5-EF3EB04F9101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E32BE4BA-B38C-4240-B1C5-EF3EB04F9101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E32BE4BA-B38C-4240-B1C5-EF3EB04F9101}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E32BE4BA-B38C-4240-B1C5-EF3EB04F9101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E32BE4BA-B38C-4240-B1C5-EF3EB04F9101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E32BE4BA-B38C-4240-B1C5-EF3EB04F9101}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{012D585F-B343-4689-9975-4D20C0B7AAB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{012D585F-B343-4689-9975-4D20C0B7AAB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{012D585F-B343-4689-9975-4D20C0B7AAB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{012D585F-B343-4689-9975-4D20C0B7AAB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +107,9 @@ Global
 		{AD7EED5E-63CF-4C62-8576-E458ABBD8E46} = {AB997D15-D132-411F-9031-FE5CF60AD864}
 		{33D3051B-480D-441C-8004-2441DD0CE7A4} = {D8241381-4D99-45C5-B40C-4A09E4593E7B}
 		{8BD8E466-FE42-4E82-932F-68F2D5143B93} = {D8241381-4D99-45C5-B40C-4A09E4593E7B}
+		{9A03675F-ED15-423B-9503-85EF3AB80565} = {D8241381-4D99-45C5-B40C-4A09E4593E7B}
+		{E32BE4BA-B38C-4240-B1C5-EF3EB04F9101} = {D8241381-4D99-45C5-B40C-4A09E4593E7B}
+		{012D585F-B343-4689-9975-4D20C0B7AAB7} = {D8241381-4D99-45C5-B40C-4A09E4593E7B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0E0EC016-32D4-4AD6-B872-DA221E2D3035}

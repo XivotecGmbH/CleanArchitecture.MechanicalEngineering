@@ -1,0 +1,198 @@
+@import "themes.css";
+
+base {
+  background-color: var(--background-color);
+  font-size: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  background-color: var(--header-footer-color);
+}
+
+.header h1 {
+  margin-left: 20px;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 20px;
+}
+
+main {
+  min-height: 720px;
+  min-width: 480px;
+  margin: 10px;
+  height: 80vh;
+  color: var(--font-color);
+}
+
+hr {
+  height: 2px;
+  background-color: var(--font-color);
+  border: none;
+}
+
+.container {
+  margin: 20px;
+}
+
+.page_title {
+  text-align: start;
+  margin-left: 10px;
+}
+
+.user_input {
+  margin: 10px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  vertical-align: central;
+  justify-content: space-between;
+}
+
+.user_input_section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  vertical-align: central;
+}
+
+button {
+  color: var(--button-font-color);
+  background-color: var(--button-color);
+  font-size: 20px;
+  height: 45px;
+  width: 100px;
+}
+
+.button:disabled {
+  background-color: lightgray;
+  color: gray;
+}
+
+mat-slide-toggle {
+  align-self: center;
+  color: darkblue;
+  margin: 10px;
+}
+
+input {
+  background-color: var(--input-color);
+}
+
+input[type=text] {
+  height: 25px;
+  width: 200px;
+  font-size: 20px;
+}
+
+input[type=number] {
+  height: 25px;
+  width: 200px;
+  text-align: center;
+  font-size: 20px;
+}
+
+input[type=checkbox] {
+  height: 25px;
+  width: 25px;
+}
+
+.icon {
+  height: 50px;
+  width: 50px;
+}
+
+.icon_button {
+  height: 50px;
+  width: 50px;
+  background: none;
+  border: none;
+  margin: 0px;
+}
+
+.icon_button img {
+  height: 45px;
+  width: 45px;
+  margin: 0px;
+}
+
+.drop_down { }
+
+.drop_down mat-select {
+  width: 200px;
+  height: 43px;
+  color: var(--button-font-color);
+  border: 1px var(--font-color) solid;
+  background-color: var(--input-color);
+  align-content: center;
+}
+
+.drop_down label {
+  margin: 10px;
+}
+
+.listings {
+  margin: 10px;
+  overflow-y: auto;
+}
+
+.listings_frame {
+  border: 1px var(--font-color) solid;
+  padding: 10px;
+  background-color: var(--listing-background-color);
+}
+
+.listings_row {
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.listings_side {
+  display: flex;
+  align-items: center;
+}
+
+.listings_row span {
+  font-size: 20px;
+}
+
+.listings_row button {
+  border: none;
+  background: none;
+}
+
+.two_columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 1px;
+  width: 500px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.two_columns_entry {
+  display: contents;
+  font-size: 20px;
+  height: 45px;
+  margin: 10px;
+}
+
+.two_columns_entry label {
+  font-size: 20px;
+  text-align: left;
+  margin-top: auto;
+  margin-bottom: auto;
+  border-bottom: 1px dashed gray;
+}
+
+.errorText {
+  color: red;
+}

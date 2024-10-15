@@ -1,0 +1,36 @@
+.connectionStateDisplay {
+  display: flex;
+  align-items: center;
+  grid-column: span 2;
+  justify-content: center;
+}
+
+.connectionStateLabel {
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.connectionStateMarker {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.connectionStateMarkerConnected {
+  background-color: green;
+}
+
+.connectionStateMarkerDisconnected {
+  background-color: red;
+}
+
+.controlButton {
+  height: 40px;
+  width: 150px;
+  font-size: 20px;
+}
+
+.controlButton:disabled {
+  background-color: lightgray;
+  color: gray;
+}

@@ -27,7 +27,7 @@ public class DeleteToDoItemHandler : IRequestHandler<DeleteToDoItemCommand>
     {
         var itemToDelete = _mapper.Map<ToDoItem>(request.Item);
 
-        var repo = _unitOfWork.GetRepository<ToDoItem>();
+        var repo = _unitOfWork.GetRelationalRepository<ToDoItem>();
         await repo.DeleteAsync(itemToDelete);
     }
 }

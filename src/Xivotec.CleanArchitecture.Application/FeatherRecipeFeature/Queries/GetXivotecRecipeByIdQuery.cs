@@ -25,7 +25,7 @@ public class GetXivotecRecipeByIdQueryHandler : IRequestHandler<GetXivotecRecipe
 
     public async Task<XivotecRecipeDto> Handle(GetXivotecRecipeByIdQuery request, CancellationToken cancellationToken)
     {
-        var repo = _unitOfWork.GetRepository<XivotecRecipe>();
+        var repo = _unitOfWork.GetRelationalRepository<XivotecRecipe>();
         var recipe = await repo.GetByIdAsync(request.Id);
 
         return _mapper.Map<XivotecRecipeDto>(recipe);

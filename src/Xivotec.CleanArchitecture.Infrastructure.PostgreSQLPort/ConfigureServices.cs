@@ -11,16 +11,18 @@ public static class ConfigureServices
     public static IServiceCollection RegisterPostgreSqlPortServices(this IServiceCollection services)
     {
         services
-            .RegisterInterfaceImplementationAsSingletons<IPersistentRepository>()
+            .RegisterInterfaceImplementationAsScoped<IPersistentRepository>()
             .RegisterInterfaceImplementationAsSingletons<IRuntimeRepository>();
 
         var serviceProvider = services.BuildServiceProvider();
         var persistenceConfigurationService = serviceProvider.GetRequiredService<IPersistenceConfigurationService>();
 
         services
-            .AddSingleton<IDataContext, PostgresPortDataContext>()
+            .AddTransient<IDataContext, PostgresPortDataContext>()
             .AddDbContext<PostgresPortDataContext>(
-                options => options.UseNpgsql(persistenceConfigurationService.GetPersistenceConfigurationString()));
+                options => options.UseNpgsql(persistenceConfigurationService.GetPersistenceConfigurationString()),
+                optionsLifetime: ServiceLifetime.Scoped,
+                contextLifetime: ServiceLifetime.Scoped);
 
         return services;
     }

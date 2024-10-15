@@ -29,12 +29,12 @@ public class AddToDoListCommandTest
     public async Task Handle_ShouldReturnNewToDoList_WhenRequestIsValid()
     {
         //Arrange
-        var repo = Substitute.For<IRepository<ToDoList>>();
+        var repo = Substitute.For<IRelationalRepository<ToDoList>>();
 
         _mapper.Map<ToDoList>(Arg.Is(_testObjects.ToDoListDto)).Returns(_testObjects.ToDoList);
         _mapper.Map<ToDoListDto>(Arg.Is(_testObjects.ToDoList)).Returns(_testObjects.ToDoListDto);
 
-        _unitOfWork.GetRepository<ToDoList>().Returns(repo);
+        _unitOfWork.GetRelationalRepository<ToDoList>().Returns(repo);
 
         //Act
         var result = await _sut.Handle(new AddToDoListCommand(_testObjects.ToDoListDto), CancellationToken.None);

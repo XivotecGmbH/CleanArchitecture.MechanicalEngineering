@@ -13,7 +13,7 @@ public class AddFeatherDeviceCommandTest
 {
     private readonly IMapper _mapper = Substitute.For<IMapper>();
     private readonly IUnitOfWork _unitOfWork = Substitute.For<IUnitOfWork>();
-    private readonly IRepository<FeatherDevice> _featherDeviceRepository = Substitute.For<IRepository<FeatherDevice>>();
+    private readonly IRelationalRepository<FeatherDevice> _featherDeviceRepository = Substitute.For<IRelationalRepository<FeatherDevice>>();
     private readonly FeatherDeviceFeatureTestObjects _testObjects;
     private readonly AddFeatherDeviceHandler _sut;
 
@@ -31,7 +31,7 @@ public class AddFeatherDeviceCommandTest
         //Arrange
         _mapper.Map<FeatherDevice>(Arg.Is(_testObjects.FeatherDeviceDto)).Returns(_testObjects.FeatherDevices[0]);
         _mapper.Map<FeatherDeviceDto>(Arg.Is(_testObjects.FeatherDevices[0])).Returns(_testObjects.FeatherDeviceDto);
-        _unitOfWork.GetRepository<FeatherDevice>().Returns(_featherDeviceRepository);
+        _unitOfWork.GetRelationalRepository<FeatherDevice>().Returns(_featherDeviceRepository);
 
         //Act
         var result = await _sut.Handle(new AddFeatherDeviceCommand(_testObjects.FeatherDeviceDto), CancellationToken.None);

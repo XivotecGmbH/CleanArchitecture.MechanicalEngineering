@@ -28,10 +28,10 @@ public class UpdateToDoListCommandTest
     public async Task Handle_ShouldRun_WhenRequestIsValid()
     {
         //Arrange
-        var repo = Substitute.For<IRepository<ToDoList>>();
+        var repo = Substitute.For<IRelationalRepository<ToDoList>>();
 
         _mapper.Map<ToDoList>(Arg.Is(_testObjects.ToDoListDto)).Returns(_testObjects.ToDoList);
-        _unitOfWork.GetRepository<ToDoList>().Returns(repo);
+        _unitOfWork.GetRelationalRepository<ToDoList>().Returns(repo);
 
         //Act
         await _sut.Handle(new UpdateToDoListCommand(_testObjects.ToDoListDto), CancellationToken.None);

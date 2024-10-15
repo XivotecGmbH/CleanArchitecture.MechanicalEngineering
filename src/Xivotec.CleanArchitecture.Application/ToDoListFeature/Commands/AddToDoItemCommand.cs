@@ -33,7 +33,7 @@ public class AddToDoItemHandler : IRequestHandler<AddToDoItemCommand, ToDoItemDt
     public async Task<ToDoItemDto> Handle(AddToDoItemCommand request, CancellationToken cancellationToken)
     {
         var itemToAdd = _mapper.Map<ToDoItem>(request.Item);
-        var repo = _unitOfWork.GetRepository<ToDoItem>();
+        var repo = _unitOfWork.GetRelationalRepository<ToDoItem>();
 
         // Create and dispatch new DomainEvent
         var domainEvent = new ToDoItemCreatedEvent(itemToAdd);

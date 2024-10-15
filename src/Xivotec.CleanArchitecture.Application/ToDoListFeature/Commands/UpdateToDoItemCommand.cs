@@ -26,7 +26,7 @@ public class UpdateToDoItemHandler : IRequestHandler<UpdateToDoItemCommand>
     public async Task Handle(UpdateToDoItemCommand request, CancellationToken cancellationToken)
     {
         var itemToUpdate = _mapper.Map<ToDoItem>(request.Item);
-        var repo = _unitOfWork.GetRepository<ToDoItem>();
+        var repo = _unitOfWork.GetRelationalRepository<ToDoItem>();
 
         await repo.UpdateAsync(itemToUpdate);
     }

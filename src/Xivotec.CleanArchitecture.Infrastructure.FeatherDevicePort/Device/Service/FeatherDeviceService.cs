@@ -26,7 +26,7 @@ public class FeatherDeviceService :
 
     public async Task InitializeAsync(FeatherDeviceDto device)
     {
-        var repo = _unitOfWork.GetRepository<FeatherDeviceFacade>();
+        var repo = _unitOfWork.GetRelationalRepository<FeatherDeviceFacade>();
         var facade = _featherDeviceFactory.CreateFeatherDeviceFacade(device);
         await repo.AddAsync((FeatherDeviceFacade)facade);
 
@@ -166,7 +166,7 @@ public class FeatherDeviceService :
 
     private async Task<FeatherDeviceFacade> GetFacadeByIdAsync(Guid id)
     {
-        var repo = _unitOfWork.GetRepository<FeatherDeviceFacade>();
+        var repo = _unitOfWork.GetRelationalRepository<FeatherDeviceFacade>();
         try
         {
             return await repo.GetByIdAsync(id);
@@ -179,7 +179,7 @@ public class FeatherDeviceService :
 
     private async Task DeleteFacadeByIdAsync(Guid id)
     {
-        var repo = _unitOfWork.GetRepository<FeatherDeviceFacade>();
+        var repo = _unitOfWork.GetRelationalRepository<FeatherDeviceFacade>();
         try
         {
             var deviceToDelete = await repo.GetByIdAsync(id);

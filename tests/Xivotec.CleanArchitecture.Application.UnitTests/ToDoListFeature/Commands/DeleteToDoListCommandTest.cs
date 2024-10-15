@@ -33,9 +33,9 @@ public class DeleteToDoListCommandTest
     public async Task Handle_ShouldRun_WhenRequestIsValid()
     {
         //Arrange
-        var repo = Substitute.For<IRepository<ToDoList>>();
+        var repo = Substitute.For<IRelationalRepository<ToDoList>>();
 
-        _unitOfWork.GetRepository<ToDoList>().Returns(repo);
+        _unitOfWork.GetRelationalRepository<ToDoList>().Returns(repo);
         _mapper.Map<ToDoList>(Arg.Is(_testObjects.ToDoListDto)).Returns(_testObjects.ToDoList);
 
         //Act

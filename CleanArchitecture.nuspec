@@ -3,7 +3,7 @@
 
   <metadata>
     <id>XivoBlue.CleanArchitecture.MechanicalEngineering.Template</id>
-    <version>2.1.0</version>
+    <version>3.0.1</version>
     <title>Clean Architecture Template For Mechanical Engineering</title>
     <authors>Xivotec GmbH</authors>
 	
@@ -12,11 +12,11 @@
 	</description>
 	
     <summary>
-		Adapting Clean Architecture To Connect And Communicate With Hardware Devices
+		Adapting Clean Architecture To Connect And Communicate With Hardware Devices with Time series database and Angular
     </summary>
 	
     <releaseNotes>
-		Initial Mechanical Engineering Release Version
+		XivoBlue Phase 3 Release Version
     </releaseNotes>
 
     <projectUrl>https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering</projectUrl>
@@ -24,7 +24,7 @@
 
     <license type="expression">MIT</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <tags>clean-architecture project template csharp dotnet dotnetmaui mechanical engineering machine hardware device recipe process</tags>
+    <tags>clean-architecture project template csharp dotnet dotnetmaui mechanical engineering machine hardware device recipe process influxdb Angular</tags>
 	<icon>company_logo_black.png</icon>
     <readme>README.md</readme>
 	

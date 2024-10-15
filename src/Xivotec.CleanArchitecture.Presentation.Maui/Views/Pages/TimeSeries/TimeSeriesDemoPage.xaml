@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<controls:HeaderFooterPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.TimeSeries;assembly=Xivotec.CleanArchitecture.Presentation.Core"
+                           xmlns:dataTypes="clr-namespace:Xivotec.CleanArchitecture.Application.TemperatureFeature.Dtos;assembly=Xivotec.CleanArchitecture.Application"
+                           xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
+                           x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.TimeSeries.TimeSeriesDemoPage"
+                           x:DataType="viewModels:TimeSeriesDemoViewModel">
+    
+    <Grid Margin="20"
+          RowDefinitions="100, Auto, *"
+          RowSpacing="10">
+        <Label Grid.Row="0" Text="Time Series Data Ingestion Demo" 
+            FontSize="32"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Center"/>
+        
+        <Border Stroke="LightGray" StrokeThickness="1" Grid.Row="1">
+            <HorizontalStackLayout Spacing="40" VerticalOptions="Center" Margin="15">
+                <Label Text="Bucket: Temperature"
+                       FontSize="24"
+                       FontAttributes="Bold" VerticalOptions="Center"/>
+                <Button WidthRequest="300"
+                        Text="Save random values"
+                        FontSize="24"
+                        Command="{Binding SaveNewEntriesCommand}"/>
+                <Button WidthRequest="300"
+                        Text="Clear values"
+                        FontSize="24"
+                        Command="{Binding DeleteAllEntriesCommand}"/>
+            </HorizontalStackLayout>
+        </Border>
+
+        <ScrollView Grid.Row="2">
+            <StackLayout BindableLayout.ItemsSource="{Binding TemperatureEntries}"
+                         Spacing="10">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type dataTypes:TemperatureEntryDto}" >
+                        <Frame BorderColor="Gray"
+                               BackgroundColor="{AppThemeBinding Light={StaticResource Gray100},
+                    Dark={StaticResource Black}}">
+                            <HorizontalStackLayout Spacing="100">
+                                <Label Text="{Binding Timestamp}"
+                                       FontSize="12" 
+                                       VerticalOptions="Center"
+                                       WidthRequest="200"/>
+                                <Label Text="{Binding Temperature}"
+                                       FontSize="12" 
+                                       VerticalOptions="Center"
+                                       WidthRequest="200"/>
+                                <Label Text="{Binding Source}"
+                                       FontSize="12" 
+                                       VerticalOptions="Center"
+                                       WidthRequest="200"/>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+
+        <Grid Grid.Row ="2"
+              BackgroundColor="Black"
+              Opacity="1"
+              IsVisible="{Binding IsLoadingScreenVisible}">
+            <ActivityIndicator IsRunning="True"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+        </Grid>
+    </Grid>
+    
+</controls:HeaderFooterPage>

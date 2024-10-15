@@ -1,0 +1,36 @@
+<head>
+    <title>Time Series Data Ingestion Demo</title>
+</head>
+
+<main>
+    <div class="page_title">
+      <h1>Time Series Data Ingestion Demo</h1>
+    </div>
+    <div class="content-container">
+        <div class="controls">
+            <p class="bucket-paragraph">Bucket: Temperature</p>
+            <button class="saveButton" (click)="saveButtonClicked()">Save Random Values</button>
+            <button class="clearButton" (click)="clearButtonClicked()">Clear Values</button>
+        </div>
+
+        @if (isLoadingScreenActive) {
+            <div class="loading-text listing-frame">
+                <b>Loading...</b>
+            </div>
+        }
+
+        @if (!isLoadingScreenActive) {
+            <div class="listing listing-frame">
+                @for (entry of temperatureEntryDtos; track entry) {
+                    <div class="frame">
+                        <div class="row">
+                            <span>{{ entry.timestamp | date:'yyyy-MM-dd HH:mm:ss.SSS' }}</span>
+                            <span>{{ entry.temperature }}</span>
+                            <span>{{ entry.source }}</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</main>

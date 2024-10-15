@@ -5,6 +5,7 @@ using Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Device;
 using Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Notification;
 using Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Processes;
 using Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Recipe;
+using Xivotec.CleanArchitecture.Presentation.Core.ViewModels.TimeSeries;
 using Xivotec.CleanArchitecture.Presentation.Core.ViewModels.ToDoList;
 
 namespace Xivotec.CleanArchitecture.Presentation.Core.ViewModels.Controls;
@@ -44,4 +45,8 @@ public partial class MainMenuViewModel : ViewModelBase
     [RelayCommand]
     public async Task NavigateToNotificationsAsync()
         => await Navigation.NavigateToBaseAsync(nameof(NotificationsViewModel));
+
+    [RelayCommand]
+    public async Task NavigateToTimeSeriesDemoAsync()
+        => await Navigation.NavigateToBaseAsync(nameof(TimeSeriesDemoViewModel));
 }

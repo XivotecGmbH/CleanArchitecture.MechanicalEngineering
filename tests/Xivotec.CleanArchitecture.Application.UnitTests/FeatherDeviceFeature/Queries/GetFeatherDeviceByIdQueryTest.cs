@@ -28,7 +28,7 @@ public class GetFeatherDeviceByIdQueryTest
     public async Task Handle_ShouldFindCorrectDeviceById_WhenDeviceExists()
     {
         //Arrange
-        var repo = _unitOfWork.GetRepository<FeatherDevice>();
+        var repo = _unitOfWork.GetRelationalRepository<FeatherDevice>();
         repo.GetByIdAsync(Arg.Is(_testObjects.FeatherDevices[0].Id)).Returns(_testObjects.FeatherDevices[0]);
 
         _mapper.Map<FeatherDeviceDto>(Arg.Is(_testObjects.FeatherDevices[0])).Returns(_testObjects.FeatherDeviceDto);

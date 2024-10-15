@@ -33,7 +33,7 @@ public class DeleteToDoListHandler : IRequestHandler<DeleteToDoListCommand>
     public async Task Handle(DeleteToDoListCommand request, CancellationToken cancellationToken)
     {
         var itemToDelete = _mapper.Map<ToDoList>(request.Item);
-        var repo = _unitOfWork.GetRepository<ToDoList>();
+        var repo = _unitOfWork.GetRelationalRepository<ToDoList>();
 
         // Events: Delete all items before list
         var domainEvent = new ToDoListDeletedEvent(itemToDelete);

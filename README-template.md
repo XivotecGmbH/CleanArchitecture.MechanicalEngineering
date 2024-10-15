@@ -1,6 +1,6 @@
 # A Clean Architecture Mechanical Engineering .NET Solution Template
 
-The project was generated using the [Xivotec.CleanArchitecture.MechanicalEngineering.Template](https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering) version 2.1
+The project was generated using the [Xivotec.CleanArchitecture.MechanicalEngineering.Template](https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering) version 3.1
 
 ## Build
 

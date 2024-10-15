@@ -1,0 +1,44 @@
+<head>
+  <title>Recipes</title>
+</head>
+
+<main>
+  <div class="page_title">
+    <h1>Recipes</h1>
+  </div>
+
+  <div class="user_input">
+    <div class="user_input_section">
+      <div class="drop_down">
+        <mat-select [(value)]="Sorting" placeholder="Select recipe type">
+          @for(type of RecipeType | keyvalue; track RecipeType) {
+            <mat-option [value]="type.key">
+              {{ type.key }}
+            </mat-option>
+          }
+        </mat-select>
+      </div>
+      <button class="icon_button" (click)="addButtonClicked()">
+        @if (documentDarkThemePresent) {
+          <img src="../../assets/Images/icon_add_white.png" alt="Add" />
+        }
+        @else {
+          <img src="../../assets/Images/icon_add.png" alt="Add" />
+        }
+      </button>
+    </div>
+  </div>
+
+  <div class="listings">
+    @for (recipe of recipeCollection; track recipe.id) {
+      <div class="listings_frame" (click)="navigateButtonClicked(recipe)">
+        <div class="listings_row">
+          <span>{{ recipe.name }}</span>
+          <button class="icon_button" (click)="deleteButtonClicked(recipe);  $event.stopPropagation()">
+            <img src="../../assets/Images/icon_bin.png" alt="Delete">
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</main>

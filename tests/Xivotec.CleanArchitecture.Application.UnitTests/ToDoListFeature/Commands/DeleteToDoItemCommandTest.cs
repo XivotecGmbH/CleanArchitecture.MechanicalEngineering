@@ -27,9 +27,9 @@ public class DeleteToDoItemCommandTest
     public async Task Handle_ShouldRun_WhenRequestIsValid()
     {
         //Arrange
-        var repo = Substitute.For<IRepository<ToDoItem>>();
+        var repo = Substitute.For<IRelationalRepository<ToDoItem>>();
 
-        _unitOfWork.GetRepository<ToDoItem>().Returns(repo);
+        _unitOfWork.GetRelationalRepository<ToDoItem>().Returns(repo);
         _mapper.Map<ToDoItem>(Arg.Is(_testObjects.ToDoItemsDto[0])).Returns(_testObjects.ToDoItems[0]);
 
         //Act

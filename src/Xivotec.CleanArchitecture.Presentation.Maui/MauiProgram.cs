@@ -27,6 +27,7 @@ public static class MauiProgram
             .RegisterInfrastructureServices()
             .RegisterDevicePortServices()
             .RegisterPostgreSqlPortServices()
+            .RegisterInfluxDbPortServices()
             .RegisterRoutes();
 
         MauiGlobalExceptionDelegate.UnhandledException += OnUnhandledException;

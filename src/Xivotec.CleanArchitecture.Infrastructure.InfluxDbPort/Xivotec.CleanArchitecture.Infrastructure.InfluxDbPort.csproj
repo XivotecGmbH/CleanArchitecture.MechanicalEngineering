@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="InfluxDB.Client" />
+    <PackageReference Include="InfluxDB.Client.Linq" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Xivotec.CleanArchitecture.Application\Xivotec.CleanArchitecture.Application.csproj" />
+    <ProjectReference Include="..\Xivotec.CleanArchitecture.Domain\Xivotec.CleanArchitecture.Domain.csproj" />
+    <ProjectReference Include="..\Xivotec.CleanArchitecture.Infrastructure\Xivotec.CleanArchitecture.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

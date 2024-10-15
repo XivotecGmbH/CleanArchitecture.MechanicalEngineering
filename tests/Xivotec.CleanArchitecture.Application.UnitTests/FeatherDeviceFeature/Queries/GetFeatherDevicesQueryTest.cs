@@ -28,7 +28,7 @@ public class GetFeatherDevicesQueryTest
     public async Task Handle_ShouldFindAllDevices_WhenDevicesExists()
     {
         //Arrange
-        var repo = _unitOfWork.GetRepository<FeatherDevice>();
+        var repo = _unitOfWork.GetRelationalRepository<FeatherDevice>();
         repo.GetAllAsync().Returns(_testObjects.FeatherDevices);
 
         _mapper.Map<FeatherDeviceDto>(Arg.Is(_testObjects.FeatherDevices[0])).Returns(_testObjects.FeatherDeviceDto);

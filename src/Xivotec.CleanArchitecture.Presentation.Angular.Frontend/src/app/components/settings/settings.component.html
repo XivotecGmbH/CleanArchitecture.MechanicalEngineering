@@ -1,0 +1,23 @@
+<main>
+  <div class="page_title">
+    <h1>
+      Settings
+    </h1>
+  </div>
+
+  <div class="section">
+    <h3>Application Appearance Settings</h3>
+    <hr/>
+    <label for="DarkModeToggle">Enable Dark Mode</label>
+    <mat-slide-toggle id="DarkModeToggle" [(ngModel)]="isDarkMode" (click)="toggleTheme()"/>
+  </div>
+
+  <div class="section">
+    <h3>Database Connection Settings</h3>
+    <hr/>
+    <p>Address: {{ dbHost }}</p>
+    <p>Port: {{ dbPort }}</p>
+    <p>Name: {{ dbName }}</p>
+  </div>
+</main>
+

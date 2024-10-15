@@ -24,7 +24,7 @@ public class GetToDoListListHandler : IRequestHandler<GetToDoListAllQuery, List<
 
     public async Task<List<ToDoListDto>> Handle(GetToDoListAllQuery request, CancellationToken cancellationToken)
     {
-        var repo = _unitOfWork.GetRepository<ToDoList>();
+        var repo = _unitOfWork.GetRelationalRepository<ToDoList>();
         var lists = await repo.GetAllAsync();
 
         return lists.Select(_mapper.Map<ToDoListDto>).ToList();

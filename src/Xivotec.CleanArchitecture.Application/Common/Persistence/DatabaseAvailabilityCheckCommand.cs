@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Xivotec.CleanArchitecture.Application.Common.Persistence.Interfaces;
+using Xivotec.CleanArchitecture.Domain.TemperatureAggregate.Entities;
 using Xivotec.CleanArchitecture.Domain.ToDoListAggregate.Entities;
 
 namespace Xivotec.CleanArchitecture.Application.Common.Persistence;
@@ -17,7 +18,8 @@ public class DatabaseAvailabilityCheckHandler : IRequestHandler<DatabaseAvailabi
 
     public Task Handle(DatabaseAvailabilityCheckCommand request, CancellationToken cancellationToken)
     {
-        _ = _unitOfWork.GetRepository<ToDoList>();
+        _ = _unitOfWork.GetRelationalRepository<ToDoList>();
+        _ = _unitOfWork.GetTimeSeriesRepository<TemperatureEntry>();
         return Task.CompletedTask;
     }
 }

@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Xivotec.CleanArchitecture.Application\Xivotec.CleanArchitecture.Application.csproj" />
     <ProjectReference Include="..\..\src\Xivotec.CleanArchitecture.Domain\Xivotec.CleanArchitecture.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Xivotec.CleanArchitecture.Infrastructure.InfluxDbPort\Xivotec.CleanArchitecture.Infrastructure.InfluxDbPort.csproj" />
     <ProjectReference Include="..\..\src\Xivotec.CleanArchitecture.Infrastructure\Xivotec.CleanArchitecture.Infrastructure.csproj" />
   </ItemGroup>
 

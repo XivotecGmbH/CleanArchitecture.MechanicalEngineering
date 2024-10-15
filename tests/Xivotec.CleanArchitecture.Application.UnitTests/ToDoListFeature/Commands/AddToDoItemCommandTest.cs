@@ -34,12 +34,12 @@ public class AddToDoItemCommandTest
     public async Task Handle_ShouldReturnNewToDoItem_WhenTodoItemPresent()
     {
         //Arrange
-        var repo = Substitute.For<IRepository<ToDoItem>>();
+        var repo = Substitute.For<IRelationalRepository<ToDoItem>>();
 
         _mapper.Map<ToDoItem>(Arg.Is(_testObjects.ToDoItemsDto[0])).Returns(_testObjects.ToDoItems[0]);
         _mapper.Map<ToDoItemDto>(Arg.Is(_testObjects.ToDoItems[0])).Returns(_testObjects.ToDoItemsDto[0]);
 
-        _unitOfWork.GetRepository<ToDoItem>().Returns(repo);
+        _unitOfWork.GetRelationalRepository<ToDoItem>().Returns(repo);
 
         //Act
         var result = await _sut.Handle(new AddToDoItemCommand(_testObjects.ToDoItemsDto[0]), CancellationToken.None);

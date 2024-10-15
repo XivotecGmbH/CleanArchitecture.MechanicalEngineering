@@ -3,12 +3,14 @@ using Xivotec.CleanArchitecture.Application.Common.Recipe;
 using Xivotec.CleanArchitecture.Application.FeatherDeviceFeature.Dtos;
 using Xivotec.CleanArchitecture.Application.FeatherRecipeFeature.Dtos;
 using Xivotec.CleanArchitecture.Application.Notifications.Dtos;
+using Xivotec.CleanArchitecture.Application.TemperatureFeature.Dtos;
 using Xivotec.CleanArchitecture.Application.ToDoListFeature.Dtos;
 using Xivotec.CleanArchitecture.Domain.FeatherDeviceAggregate.Entities;
 using Xivotec.CleanArchitecture.Domain.FeatherDeviceAggregate.Enums;
 using Xivotec.CleanArchitecture.Domain.NotificationAggregate.Entities;
 using Xivotec.CleanArchitecture.Domain.NotificationAggregate.Enums;
 using Xivotec.CleanArchitecture.Domain.RecipeAggregate;
+using Xivotec.CleanArchitecture.Domain.TemperatureAggregate.Entities;
 using Xivotec.CleanArchitecture.Domain.ToDoListAggregate.Entities;
 
 namespace Xivotec.CleanArchitecture.Application.Common.Converter;
@@ -30,5 +32,7 @@ public class MappingProfiles : Profile
 
         _ = CreateMap<NotificationType, NotificationTypeDto>().ReverseMap();
         _ = CreateMap<Notification, NotificationDto>().ReverseMap();
+
+        _ = CreateMap<TemperatureEntry, TemperatureEntryDto>().ReverseMap();
     }
 }

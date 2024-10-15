@@ -1,0 +1,38 @@
+<head>
+  <title>Notifications</title>
+</head>
+
+<main>
+    <div class="page_title">
+      <h1>Notifications</h1>
+    </div>
+
+    <div class="listings">
+      @for (notification of unconfirmedNotifications; track notification.id) {
+        <div class="listings_frame" [ngClass]="getClassForNotification(notification)"
+             (click)="NavigateButtonClicked(notification)">
+          <div class="listings_row">
+            <span class="title-span">{{ notification.title }}</span>
+            <span class="content-span">{{ notification.content }}</span>
+            <button class="confirm-button" (click)="acknowledgeButtonClicked(notification);  $event.stopPropagation()"
+                    [disabled]="notification.acknowledged">
+              {{ notification.acknowledged ? '\u2714' : 'Confirm' }}
+            </button>
+          </div>
+        </div>
+      }
+      @for (notification of confirmedNotifications; track notification.id) {
+        <div class="listings_frame" [ngClass]="getClassForNotification(notification)"
+             (click)="NavigateButtonClicked(notification)">
+          <div class="listings_row">
+            <span class="title-span">{{ notification.title }}</span>
+            <span class="content-span">{{ notification.content }}</span>
+            <button class="confirm-button" (click)="acknowledgeButtonClicked(notification);  $event.stopPropagation()"
+                    [disabled]="notification.acknowledged">
+              {{ notification.acknowledged ? '\u2714' : 'Confirm' }}
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+</main>

@@ -1,0 +1,68 @@
+<head>
+    <title>FeatherDevice Recipe</title>
+</head>
+
+<main>
+  <div class="page_title">
+    <h1>FeatherDevice Recipe</h1>
+  </div>
+
+  <div class="import">
+    <button (click)="exportButtonClicked()">
+      Export
+    </button>
+  </div>
+
+  <div class="two_columns">
+    <div class="two_columns_entry">
+      <label for="textInput">Name: </label>
+      <input class="" id="textInput" type="text"
+             [(ngModel)]="selectedRecipe.featherDeviceRecipe!.name" (ngModelChange)="onInputNameChange()"/>
+    </div>
+
+    <div class="two_columns_entry">
+      <label for="intervalInput">Interval: </label>
+      <input class="" id="intervalInput" type="number"
+             [(ngModel)]="selectedRecipe.featherDeviceRecipe!.interval"/>
+    </div>
+
+    <div class="two_columns_entry">
+      <label for="LedColorInput">Led Color: </label>
+      <div class="drop_down" style="justify-self: start;">
+        <mat-select id="LedColorInput" placeholder="Select color"
+                    [(ngModel)]="selectedRecipe.featherDeviceRecipe!.ledColor">
+          @for(color of LedColorDto | keyvalue; track LedColorDto) {
+            <mat-option [value]="color.key">
+              {{ color.key }}
+            </mat-option>
+          }
+        </mat-select>
+      </div>
+    </div>
+
+    <div class="two_columns_entry">
+      <label for="isLedSwitchedOnInput">Is LED switched on: </label>
+      <input id="isLedSwitchedOnInput" type="checkbox"
+             [(ngModel)]="selectedRecipe.featherDeviceRecipe!.isLedSwitchedOn"/>
+    </div>
+
+    <div class="two_columns_entry">
+      <label for="isDisplaySwitchedOnInput">Is Display switched on: </label>
+      <input id="isDisplaySwitchedOnInput" type="checkbox"
+             [(ngModel)]="selectedRecipe.featherDeviceRecipe!.isDisplaySwitchedOn"/>
+    </div>
+  </div>
+
+  <div style="display:inline-flex; margin-top:10px;">
+    <button (click)="saveButtonClicked()">
+      {{ saveButtonText }}
+    </button>
+    <button (click)="importButtonClicked()">
+        Import
+    </button>
+  </div>
+  @if (isRecipeInvalid) {
+      <p class="errorText">Recipe is invalid!</p>
+  }
+
+</main>

@@ -24,7 +24,7 @@ public class GetFeatherDeviceAllQueryHandler : IRequestHandler<GetFeatherDeviceA
 
     public async Task<List<FeatherDeviceDto>> Handle(GetFeatherDeviceAllQuery request, CancellationToken cancellationToken)
     {
-        var repo = _unitOfWork.GetRepository<FeatherDevice>();
+        var repo = _unitOfWork.GetRelationalRepository<FeatherDevice>();
         var lists = await repo.GetAllAsync();
 
         var res = lists.Select(_mapper.Map<FeatherDeviceDto>);

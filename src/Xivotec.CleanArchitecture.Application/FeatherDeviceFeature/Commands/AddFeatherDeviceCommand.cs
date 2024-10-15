@@ -26,7 +26,7 @@ public class AddFeatherDeviceHandler : IRequestHandler<AddFeatherDeviceCommand, 
     public async Task<FeatherDeviceDto> Handle(AddFeatherDeviceCommand request, CancellationToken cancellationToken)
     {
         var itemToAdd = _mapper.Map<FeatherDevice>(request.FeatherDevice);
-        var repo = _unitOfWork.GetRepository<FeatherDevice>();
+        var repo = _unitOfWork.GetRelationalRepository<FeatherDevice>();
 
         await repo.AddAsync(itemToAdd);
         return _mapper.Map<FeatherDeviceDto>(itemToAdd);

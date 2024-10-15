@@ -1,0 +1,24 @@
+<head>
+  <title>FeatherDevice Recipe</title>
+</head>
+
+<main>
+  <div class="page_title"  >
+    <h1>Configure Device</h1>
+  </div>
+
+  <div class="two_columns">
+    <div class="two_columns_entry">
+      <label for="textInput">Name: </label>
+      <input id="textInput" type="text"
+             [(ngModel)]="featherDeviceDto.name"/>
+    </div>
+    <div class="two_columns_entry">
+      <label for="portInput">Port: </label>
+      <input id="portInput" type="number" min="1" max="255"
+             [(ngModel)]="comPortEntry"/>
+    </div>
+  </div>
+
+  <button (click)="applyButtonClicked()">Apply</button>
+</main>

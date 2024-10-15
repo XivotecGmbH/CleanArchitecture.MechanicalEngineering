@@ -18,6 +18,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort\Xivotec.CleanArchitecture.Infrastructure.FeatherDevicePort.csproj" />
 		<ProjectReference Include="..\Xivotec.CleanArchitecture.Application\Xivotec.CleanArchitecture.Application.csproj" />
+		<ProjectReference Include="..\Xivotec.CleanArchitecture.Infrastructure.InfluxDbPort\Xivotec.CleanArchitecture.Infrastructure.InfluxDbPort.csproj" />
 		<ProjectReference Include="..\Xivotec.CleanArchitecture.Infrastructure.PostgreSQLPort\Xivotec.CleanArchitecture.Infrastructure.PostgreSQLPort.csproj" />
 		<ProjectReference Include="..\Xivotec.CleanArchitecture.Infrastructure\Xivotec.CleanArchitecture.Infrastructure.csproj" />
 	</ItemGroup>

@@ -37,7 +37,7 @@ public class RecipeService : IRecipeService
 
     public async Task<XivotecRecipeDto> LoadRecipeAsync(Guid id)
     {
-        var repo = _unitOfWork.GetRepository<XivotecRecipe>();
+        var repo = _unitOfWork.GetRelationalRepository<XivotecRecipe>();
         var selectedEntity = await repo.GetByIdAsync(id);
         var recipeDto = _mapper.Map<XivotecRecipeDto>(selectedEntity);
         return recipeDto;
@@ -45,8 +45,8 @@ public class RecipeService : IRecipeService
 
     public async Task UpdateRecipeAsync(XivotecRecipeDto recipe)
     {
-        var xivotecRecipeRepository = _unitOfWork.GetRepository<XivotecRecipe>();
-        var featherDeviceRepository = _unitOfWork.GetRepository<FeatherDeviceRecipe>();
+        var xivotecRecipeRepository = _unitOfWork.GetRelationalRepository<XivotecRecipe>();
+        var featherDeviceRepository = _unitOfWork.GetRelationalRepository<FeatherDeviceRecipe>();
         var xivotecEntity = _mapper.Map<XivotecRecipe>(recipe);
 
         await xivotecRecipeRepository.UpdateAsync(xivotecEntity);
@@ -55,7 +55,7 @@ public class RecipeService : IRecipeService
 
     public async Task SaveRecipeAsync(XivotecRecipeDto recipe)
     {
-        var xivotecRecipeRepository = _unitOfWork.GetRepository<XivotecRecipe>();
+        var xivotecRecipeRepository = _unitOfWork.GetRelationalRepository<XivotecRecipe>();
         var xivotecEntity = _mapper.Map<XivotecRecipe>(recipe);
 
         await xivotecRecipeRepository.AddAsync(xivotecEntity);
@@ -63,8 +63,8 @@ public class RecipeService : IRecipeService
 
     public async Task DeleteRecipeAsync(XivotecRecipeDto recipe)
     {
-        var xivotecRecipeRepository = _unitOfWork.GetRepository<XivotecRecipe>();
-        var featherDeviceRepository = _unitOfWork.GetRepository<FeatherDeviceRecipe>();
+        var xivotecRecipeRepository = _unitOfWork.GetRelationalRepository<XivotecRecipe>();
+        var featherDeviceRepository = _unitOfWork.GetRelationalRepository<FeatherDeviceRecipe>();
         var xivotecEntity = _mapper.Map<XivotecRecipe>(recipe);
 
         await xivotecRecipeRepository.DeleteAsync(xivotecEntity);

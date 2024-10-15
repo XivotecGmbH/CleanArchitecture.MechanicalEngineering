@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Xivotec.CleanArchitecture.Application.Exceptions;
+using Xivotec.CleanArchitecture.Infrastructure.UnitTests.Persistence.Repositories.Common;
 using Xunit;
 
 namespace Xivotec.CleanArchitecture.Infrastructure.UnitTests.Persistence.Repositories;

@@ -24,7 +24,7 @@ public class GetToDoItemListAllQueryHandler : IRequestHandler<GetToDoItemAllQuer
 
     public async Task<List<ToDoItemDto>> Handle(GetToDoItemAllQuery request, CancellationToken cancellationToken)
     {
-        var repo = _unitOfWork.GetRepository<ToDoItem>();
+        var repo = _unitOfWork.GetRelationalRepository<ToDoItem>();
         var lists = await repo.GetAllAsync();
 
         var res = lists.Select(_mapper.Map<ToDoItemDto>);

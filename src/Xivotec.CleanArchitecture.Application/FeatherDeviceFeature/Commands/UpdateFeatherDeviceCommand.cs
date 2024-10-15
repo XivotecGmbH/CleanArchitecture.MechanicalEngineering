@@ -26,7 +26,7 @@ public class UpdateFeatherDeviceHandler : IRequestHandler<UpdateFeatherDeviceCom
     public async Task Handle(UpdateFeatherDeviceCommand request, CancellationToken cancellationToken)
     {
         var device = _mapper.Map<FeatherDevice>(request.FeatherDevice);
-        var repo = _unitOfWork.GetRepository<FeatherDevice>();
+        var repo = _unitOfWork.GetRelationalRepository<FeatherDevice>();
 
         await repo.UpdateAsync(device);
     }

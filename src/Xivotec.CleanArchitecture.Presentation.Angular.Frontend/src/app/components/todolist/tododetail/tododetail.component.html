@@ -1,0 +1,26 @@
+<body>
+  <div class="page_title user_input">
+    <h1>
+      To Do:
+      <input class="item_title" type="text" [(ngModel)]="SelectedItem.title" placeholder="ToDoItem Title"/>
+    </h1>
+  </div>
+  
+  <div class="note">
+    <label for="note">Note:</label>
+    <br />
+    <input type="text" id="note" [(ngModel)]="SelectedItem.note" placeholder="ToDoItem Note"/>
+  </div>
+  
+  <div class="buttons">
+    @if(IsSaveButtonEnabled) {
+    <button (click)="applyInputs('save')">Save</button>
+    }
+    @if(IsUpdateButtonEnabled){
+    <button (click)="applyInputs('update')">Update</button>
+    }
+    @if(IsDeleteButtonEnabled){
+    <button (click)="applyInputs('delete')" style="color:red;">Delete</button>
+    }
+  </div>
+</body>

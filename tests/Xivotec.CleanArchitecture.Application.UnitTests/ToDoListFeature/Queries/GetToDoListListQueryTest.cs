@@ -29,10 +29,10 @@ public class GetToDoListListQueryTest
     public async Task Handle_ShouldReturnEmptyList_WhenNoToDoListsExist()
     {
         //Arrange
-        var repo = Substitute.For<IRepository<ToDoList>>();
+        var repo = Substitute.For<IRelationalRepository<ToDoList>>();
         repo.GetAllAsync().Returns(new List<ToDoList>());
 
-        _unitOfWork.GetRepository<ToDoList>().Returns(repo);
+        _unitOfWork.GetRelationalRepository<ToDoList>().Returns(repo);
 
         //Act
         var result = await _sut.Handle(new GetToDoListAllQuery(), CancellationToken.None);
@@ -47,9 +47,9 @@ public class GetToDoListListQueryTest
     public async Task Handle_ShouldReturnCorrectListOfLists_WhenMultipleToDoListsExist()
     {
         //Arrange
-        var repo = Substitute.For<IRepository<ToDoList>>();
+        var repo = Substitute.For<IRelationalRepository<ToDoList>>();
         repo.GetAllAsync().Returns(_testObjects.ToDoLists);
-        _unitOfWork.GetRepository<ToDoList>().Returns(repo);
+        _unitOfWork.GetRelationalRepository<ToDoList>().Returns(repo);
 
         _mapper.Map<ToDoListDto>(Arg.Is(_testObjects.ToDoLists[0])).Returns(_testObjects.ToDoListDto);
 

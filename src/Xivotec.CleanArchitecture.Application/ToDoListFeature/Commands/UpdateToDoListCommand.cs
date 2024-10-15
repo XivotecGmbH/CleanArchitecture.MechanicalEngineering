@@ -26,7 +26,7 @@ public class UpdateToDoListHandler : IRequestHandler<UpdateToDoListCommand>
     public async Task Handle(UpdateToDoListCommand request, CancellationToken cancellationToken)
     {
         var itemToUpdate = _mapper.Map<ToDoList>(request.Item);
-        var repo = _unitOfWork.GetRepository<ToDoList>();
+        var repo = _unitOfWork.GetRelationalRepository<ToDoList>();
 
         await repo.UpdateAsync(itemToUpdate);
     }

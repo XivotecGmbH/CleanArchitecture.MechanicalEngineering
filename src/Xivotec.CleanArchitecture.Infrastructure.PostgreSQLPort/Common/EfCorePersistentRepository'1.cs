@@ -7,7 +7,7 @@ using Xivotec.CleanArchitecture.Infrastructure.Persistence.Common.Interfaces;
 namespace Xivotec.CleanArchitecture.Infrastructure.PostgreSQLPort.Common;
 
 public abstract class EfCorePersistentRepository<TEntity>
-    : IRepository<TEntity>, IPersistentRepository
+    : IRelationalRepository<TEntity>, IPersistentRepository
     where TEntity : Entity
 {
     private readonly DbContext _context;

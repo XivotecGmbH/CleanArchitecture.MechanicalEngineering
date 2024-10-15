@@ -29,9 +29,9 @@ public class GetToDoListByIdQueryTest
     public async Task Handle_ShouldFindCorrectListById_WhenListExists()
     {
         //Arrange
-        var repo = Substitute.For<IRepository<ToDoList>>();
+        var repo = Substitute.For<IRelationalRepository<ToDoList>>();
         repo.GetByIdAsync(Arg.Is(_testObjects.ToDoList.Id)).Returns(_testObjects.ToDoList);
-        _unitOfWork.GetRepository<ToDoList>().Returns(repo);
+        _unitOfWork.GetRelationalRepository<ToDoList>().Returns(repo);
 
         _mapper.Map<ToDoListDto>(Arg.Is(_testObjects.ToDoList)).Returns(_testObjects.ToDoListDto);
 

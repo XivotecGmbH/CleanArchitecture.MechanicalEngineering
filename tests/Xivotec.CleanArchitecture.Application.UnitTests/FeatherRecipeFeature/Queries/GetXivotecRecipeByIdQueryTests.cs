@@ -29,9 +29,9 @@ public class GetXivotecRecipeByIdQueryTests
     public async Task Handle_ShouldReturnXivotecRecipeDtoById()
     {
         // Arrange
-        var repository = Substitute.For<IRepository<XivotecRecipe>>();
+        var repository = Substitute.For<IRelationalRepository<XivotecRecipe>>();
         repository.GetByIdAsync(_testObjects.XivotecRecipeDto.Id).Returns(_testObjects.XivotecRecipe);
-        _unitOfWork.GetRepository<XivotecRecipe>().Returns(repository);
+        _unitOfWork.GetRelationalRepository<XivotecRecipe>().Returns(repository);
 
         _mapper.Map<XivotecRecipeDto>(Arg.Is(_testObjects.XivotecRecipe))
             .Returns(_testObjects.XivotecRecipeDto);

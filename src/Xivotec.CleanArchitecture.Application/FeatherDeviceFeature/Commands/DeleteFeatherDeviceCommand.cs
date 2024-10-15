@@ -27,7 +27,7 @@ public class DeleteFeatherDeviceHandler : IRequestHandler<DeleteFeatherDeviceCom
     {
         var itemToDelete = _mapper.Map<FeatherDevice>(request.FeatherDevice);
 
-        var repo = _unitOfWork.GetRepository<FeatherDevice>();
+        var repo = _unitOfWork.GetRelationalRepository<FeatherDevice>();
         await repo.DeleteAsync(itemToDelete);
     }
 }
