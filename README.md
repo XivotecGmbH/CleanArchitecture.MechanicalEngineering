@@ -104,6 +104,7 @@ If you have suggestions on how to improve or extend the template, let us know vi
 Our homepage is linked in the banners at the top.
 
 ## Known Error
+It can happen, that a specific using in `ToDoListController` in `Presentation.Angular.Server.Controllers` was not correctly transformed to <YourProjectName> and the modification has to be done manually.
 
 ### MAUI
 If an error while starting .Net MAUI with the message, that a specified AndroidManifest file can not be found, occurs, copy the file AndroidManifest.xml from the location `\src\<YourProjectName>.Presentation.Maui\Platforms\Android\` to the location `\src\<YourProjectName>.Presentation.Maui\`. You can remove the copied file after building.
