@@ -1,0 +1,31 @@
+.notification-frame {
+  border: 2px solid #808080;
+}
+
+.error-frame {
+  border: 2px solid #FF3333;
+}
+
+.confirm-button{
+  font-size: 20px;
+  height: 30px;
+  border: 2px solid var(--font-color);
+  color: var(--font-color);
+}
+
+.content-span {
+  flex-grow: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title-span {
+  flex-shrink: 0;
+  text-align: left;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,37 @@
+<head>
+  <title>Notifications</title>
+</head>
+
+<main>
+    <div class="page_title">
+      <h1>{{ currentNotification.title }}</h1>
+    </div>
+
+  <div class="timestamp">
+    <p>Timestamp: {{ currentNotification.timestamp | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+  </div>
+
+  <div class="content">
+    <label>Content:</label>
+    <div class="text-area">
+      <textarea
+        class="content-display"
+        [value]="currentNotification.content"
+        readonly
+        placeholder="Notification Content is displayed here">
+      </textarea>
+    </div>
+
+    <div class="actions">
+      <button class="acknowledge-action"
+              (click)="acknowledgeButtonClicked()"
+              [disabled]="currentNotification.acknowledged">
+        {{ currentNotification.acknowledged ? 'Confirmed' : 'Confirm' }}
+      </button>
+      <button class="navigate-action"
+              (click)="navigateBackButtonClicked()">
+        Back
+      </button>
+    </div>
+  </div>
+</main>

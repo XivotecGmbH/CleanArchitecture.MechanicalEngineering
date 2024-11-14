@@ -3,7 +3,7 @@
 
   <metadata>
     <id>XivoBlue.CleanArchitecture.MechanicalEngineering.Template</id>
-    <version>3.0.1</version>
+    <version>3.0.2</version>
     <title>Clean Architecture Template For Mechanical Engineering</title>
     <authors>Xivotec GmbH</authors>
 	
@@ -16,7 +16,7 @@
     </summary>
 	
     <releaseNotes>
-		XivoBlue Phase 3 Release Version
+		XivoBlue Version 3 Release with InfluxDB and Angular
     </releaseNotes>
 
     <projectUrl>https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering</projectUrl>
@@ -27,13 +27,15 @@
     <tags>clean-architecture project template csharp dotnet dotnetmaui mechanical engineering machine hardware device recipe process influxdb Angular</tags>
 	<icon>company_logo_black.png</icon>
     <readme>README.md</readme>
-	
+	<packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
   </metadata>
   
   <files>
     <file src=".template.config\company_logo_black.png" />
     <file src="README.md" />
-    <file src=".\**" target="content" exclude="**\bin\**;**\obj\**;.\.vs\**;.\.git\**;.\.github\**;.\.sonarqube\**;.\LICENSE;.\README.md;" />
+    <file src=".\**" target="content" exclude="**\bin\**;**\obj\**;**\.idea\**;**\node_modules\**;**\.angular\**;.\.vs\**;.\.git\**;.\.github\**;.\.sonarqube\**;.\LICENSE;.\README.md;" />
   </files>
   
  </package>

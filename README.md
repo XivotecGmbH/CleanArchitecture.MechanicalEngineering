@@ -28,7 +28,7 @@
 [![Website][website-shield]][website-url] [![Instagram][instagram-shield]][instagram-url] [![LinkedIn][linkedin-shield]][linkedin-url]
 
 The goal of this template is to provide a straightforward and efficient approach for application development in the area of mechanical engineering, leveraging the power of Clean Architecture.
-Using this template, you can easily create a multi platform app for communicating with multiple hardware devices, while adhering to the core principles of Clean Architecture.
+Using this template, you can easily create a multi-platform app for communicating with multiple hardware devices, while adhering to the core principles of Clean Architecture.
 
 ## Getting Started
 The easiest way to get started with this template is to install the [NuGet package][nuget-d-url]
@@ -37,7 +37,7 @@ The easiest way to get started with this template is to install the [NuGet packa
 - Install the latest .NET 8.x SDK & Tools
 - Install the latest version of Visual Studio IDE
 - Install the latest .NET MAUI package
-- Install node.js
+- Install Node.js
 - Install / have access to a PostgreSQL database (optional, see below)
 - Enable Developer Mode on your device (required for debugging .NET MAUI applications)
 
@@ -54,43 +54,51 @@ dotnet new install XivoBlue.CleanArchitecture.MechanicalEngineering.Template
 dotnet new xt-came-sln -n <YourProjectName>
 ```
 
-Because .NET MAUI is packaged by default, `dotnet run` won't work.  
-Instead, open your solution in Visual Studio directly and run it from there.
-You may need to run `dotnet workload update` via the command line or a rebuild action in Visual Studio if build errors occur.
+[3] Choose your preferred startup project:
 
-## Angular
-Start the Xivotec.CleanArchitecture.Presentation.Angular.Server project. It uses the default port 4200. You can use the the Angular project in a browser of your choice with localhost:4200.
+This template includes both a .NET MAUI and an Angular Frontend.
+
+[3a] .NET MAUI
+- With .NET MAUI, `dotnet run` won't work.  
+Instead, open your solution in Visual Studio directly and run the `<YourProjectName>.Presentation.Maui` project from there.
+
+[3b] Angular
+- To start the application using the Angular frontend, launch the `<YourProjectName>.Presentation.Server` project.
+It uses the default port 4200. You can reach the UI in a browser of your choice at https://localhost:4200.
+You may need to run `npm install` inside the Angular project if any errors occur during startup.
+
+If you encounter any build errors, you may need to run `dotnet workload update` via the command line or a rebuild action in Visual Studio.
 
 ## Database
 
 ### PostgreSQL
 
 The template is configured to use PostgreSQL as a relational database provider by default. If you want to use another provider, you need to exchange `.RegisterPostgreSqlPortServices()`
-in the `Presentation` project `MauiProgram.cs` file and the `Infrastructure.PostgreSQLPort` project itself with a corresponding implementation.
+in the startup project and the `Infrastructure.PostgreSQLPort` project itself with a corresponding implementation.
 
-The database connection string is set in the `appsettings.json` file in the `Presentation` project.
+The database connection string is set in the `appsettings.json` file of the startup project.
 To start the database with default settings, run:
 
 ```bash
 docker run -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -p 5432:5432 postgres:latest
 ```
 
-Once you run the application, the database will be created automatically (if necessary) and the latest migrations will be applied.
+Once the application runs, the database will be created automatically if needed, and the latest migrations will be applied.
 
 ### InfluxDB
 
-The template uses the InfluxDB time series database by default. The implementation can be changed just like the relational database.
+By default, this template uses the InfluxDB time series database. The implementation can be changed just like the relational database.
 
-The database connection properties are set in the `appsettings.json` file in the `Presentation` project.
+The database connection properties are set in the `appsettings.json` file in the startup project.
 To start the database with default settings, run:
 
 ```bash
 docker run -d --publish 8086:8086 influxdb:2.7.4
 ```
 
-Afterwards, complete the initial setup via the InfluxDB UI, which is available via the exposed container port. After completion, fill in a valid InfluxDB API Token for the `InfluxToken` property in the `appsettings.json` file in the `Presentation` project. Be sure that the organization name in your InfluxDB setup matches the `InfluxOrg` property provided in the `appsettings.json` in the `Presentation` project.
+Complete the initial setup via the InfluxDB UI, which is available via the exposed container port. After completion, enter a valid InfluxDB API Token for the `InfluxToken` property in the `appsettings.json` file in the `Presentation` project. Be sure that the organization name in your InfluxDB setup matches the `InfluxOrg` property provided in the `appsettings.json` file in the `Presentation` project.
 
-Once you run the application, the required buckets will be created automatically (if necessary).
+Once you run the application, the required buckets will be created automatically if needed.
 
 ## License
 
@@ -98,19 +106,15 @@ This project is licensed with the [MIT license](LICENSE).
 
 ## Support
 
-If you have any problem, please let us know by raising a new issue.
+If you have any problems, please let us know by raising a new issue.
 
-If you have suggestions on how to improve or extend the template, let us know via email.  
+If you have suggestions for improvements or extensions, let us know via email.  
 Our homepage is linked in the banners at the top.
 
-## Known Error
-It can happen, that a specific using in `ToDoListController` in `Presentation.Angular.Server.Controllers` was not correctly transformed to <YourProjectName> and the modification has to be done manually.
+## Known Errors
 
-### MAUI
-If an error while starting .Net MAUI with the message, that a specified AndroidManifest file can not be found, occurs, copy the file AndroidManifest.xml from the location `\src\<YourProjectName>.Presentation.Maui\Platforms\Android\` to the location `\src\<YourProjectName>.Presentation.Maui\`. You can remove the copied file after building.
-
-### Angular
-If the error: "Micorosoft.AspNetCore.SpaProxy.SpaProxyLaunchManager[0] Couldn't start the SPA development server with command 'npm start'" appears, then delete the folder `node_modules` in `Xivotec.CleanArchitecture.Presentation.Angular.FrontEnd`. After that execute the command `npm install` at the exact location in the command line.
+### MAUI startup
+If you encounter an error when starting .Net MAUI stating that the specified AndroidManifest file cannot be found, copy the file AndroidManifest.xml from `\src\<YourProjectName>.Presentation.Maui\Platforms\Android\` to `\src\<YourProjectName>.Presentation.Maui\`. You may delete the copied file after building.
 
 ## Technologies Used
 

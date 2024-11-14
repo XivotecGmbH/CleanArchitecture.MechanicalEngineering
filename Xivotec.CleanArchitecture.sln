@@ -31,9 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xivotec.CleanArchitecture.I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xivotec.CleanArchitecture.Infrastructure.InfluxDbPort", "src\Xivotec.CleanArchitecture.Infrastructure.InfluxDbPort\Xivotec.CleanArchitecture.Infrastructure.InfluxDbPort.csproj", "{9A03675F-ED15-423B-9503-85EF3AB80565}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Xivotec.CleanArchitecture.Presentation.Angular.Frontend", "src\Xivotec.CleanArchitecture.Presentation.Angular.Frontend\Xivotec.CleanArchitecture.Presentation.Angular.Frontend.esproj", "{E32BE4BA-B38C-4240-B1C5-EF3EB04F9101}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Xivotec.CleanArchitecture.Presentation.Angular", "src\Xivotec.CleanArchitecture.Presentation.Angular\Xivotec.CleanArchitecture.Presentation.Angular.esproj", "{E32BE4BA-B38C-4240-B1C5-EF3EB04F9101}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xivotec.CleanArchitecture.Presentation.Angular.Server", "src\Xivotec.CleanArchitecture.Presentation.Angular.Server\Xivotec.CleanArchitecture.Presentation.Angular.Server.csproj", "{012D585F-B343-4689-9975-4D20C0B7AAB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xivotec.CleanArchitecture.Presentation.Server", "src\Xivotec.CleanArchitecture.Presentation.Server\Xivotec.CleanArchitecture.Presentation.Server.csproj", "{012D585F-B343-4689-9975-4D20C0B7AAB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

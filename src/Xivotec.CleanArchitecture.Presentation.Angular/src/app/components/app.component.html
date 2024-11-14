@@ -1,0 +1,40 @@
+<head>
+  <title>XivoBlue Angular</title>
+</head>
+<body>
+
+  <header>
+    <div class="header">
+      <img src="../assets/Images/company_logo.png" alt="Xivotec GmbH Logo"/>
+      <h1> XivoBlue</h1>
+    </div>
+    <span class="notification-span">{{ notificationText }}</span>
+  </header>
+
+  <mat-drawer-container autosize>
+    <mat-drawer mode="side" opened>
+      <div class="navigation">
+        <nav>
+          <a href="./home"> Home </a>
+          <a href="./recipe"> Recipe </a>
+          <a href="./device"> Device </a>
+          <a href="./todolist"> Todo List </a>
+          <a href="./process"> Process </a>
+          <a href="./notification"> Notifications </a>
+          <a href="./timeseries"> TS Demo </a>
+          <a href="./settings"> Settings </a>
+        </nav>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-drawer-content>
+  </mat-drawer-container>
+
+  <footer>
+    <h2>XivoBlue - Xivotec GmbH </h2>
+  </footer>
+
+</body>

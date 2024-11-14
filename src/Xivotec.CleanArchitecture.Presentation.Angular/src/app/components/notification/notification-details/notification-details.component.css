@@ -1,0 +1,46 @@
+.container {
+  margin: 20px;
+}
+
+.timestamp {
+  font-size: 24px;
+  text-align: start;
+}
+
+.content{
+  text-align: start;
+}
+
+.content > *{
+  margin-bottom: 20px;
+}
+
+.content label {
+  font-size: 24px;
+}
+
+.text-area {
+  margin-top: 20px;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-display{
+  font-size: 20px;
+  width: 90%;
+  height: 200px;
+  background-color: var(--listing-background-color);
+  color: var(--font-color);
+}
+
+.acknowledge-action, .navigate-action {
+  font-size: 24px;
+  height: 30px;
+  width: 150px;
+  margin: 0 10px;
+}
