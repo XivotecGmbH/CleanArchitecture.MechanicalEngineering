@@ -3,7 +3,7 @@ using Xivotec.CleanArchitecture.Application.Notifications.Dtos;
 
 namespace Xivotec.CleanArchitecture.Presentation.Maui.Converter;
 
-public class NotificationTypeToNotificationListItemFrameColorConverter : IValueConverter
+public class NotificationTypeToNotificationListItemBorderColorConverter : IValueConverter
 {
 
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

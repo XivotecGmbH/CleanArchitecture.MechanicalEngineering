@@ -34,7 +34,7 @@ Using this template, you can easily create a multi-platform app for communicatin
 The easiest way to get started with this template is to install the [NuGet package][nuget-d-url]
 
 ## Prerequisites
-- Install the latest .NET 8.x SDK & Tools
+- Install the latest .NET 9.x SDK & Tools
 - Install the latest version of Visual Studio IDE
 - Install the latest .NET MAUI package
 - Install Node.js
@@ -67,7 +67,7 @@ Instead, open your solution in Visual Studio directly and run the `<YourProjectN
 It uses the default port 4200. You can reach the UI in a browser of your choice at https://localhost:4200.
 You may need to run `npm install` inside the Angular project if any errors occur during startup.
 
-If you encounter any build errors, you may need to run `dotnet workload update` via the command line or a rebuild action in Visual Studio.
+If you encounter any build errors, you may need to run `dotnet workload update` via the command line or the clean and rebuild actions in Visual Studio.
 
 ## Database
 

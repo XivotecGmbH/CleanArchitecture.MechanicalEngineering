@@ -1,6 +1,6 @@
 # A Clean Architecture Mechanical Engineering .NET Solution Template
 
-The project was generated using the [Xivotec.CleanArchitecture.MechanicalEngineering.Template](https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering) version 3.0.2
+The project was generated using the [Xivotec.CleanArchitecture.MechanicalEngineering.Template](https://github.com/XivotecGmbH/CleanArchitecture.MechanicalEngineering) version 3.0.3
 
 ## Build
 
@@ -18,7 +18,7 @@ This template includes both a .NET MAUI and an Angular Frontend.
   It uses the default port 4200. You can reach the UI in a browser of your choice at https://localhost:4200.
   You may need to run `npm install` inside the Angular project if any errors occur during startup.
 
-If you encounter any build errors, you may need to run `dotnet workload update` via the command line or a rebuild action in Visual Studio.
+If you encounter any build errors, you may need to run `dotnet workload update` via the command line or the clean and rebuild actions in Visual Studio.
 
 ## Test
 

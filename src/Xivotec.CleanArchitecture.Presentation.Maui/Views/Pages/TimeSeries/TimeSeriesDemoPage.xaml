@@ -36,8 +36,10 @@
                          Spacing="10">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="{x:Type dataTypes:TemperatureEntryDto}" >
-                        <Frame BorderColor="Gray"
-                               BackgroundColor="{AppThemeBinding Light={StaticResource Gray100},
+                        <Border Padding="20"
+                                StrokeShape="RoundRectangle 10"
+                                Stroke="Gray"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource Gray100},
                     Dark={StaticResource Black}}">
                             <HorizontalStackLayout Spacing="100">
                                 <Label Text="{Binding Timestamp}"
@@ -53,7 +55,7 @@
                                        VerticalOptions="Center"
                                        WidthRequest="200"/>
                             </HorizontalStackLayout>
-                        </Frame>
+                        </Border>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>

@@ -53,11 +53,13 @@ public partial class NotificationsViewModel : ViewModelBase
     {
         var confirmedNotifications = Enumerable
             .Where<NotificationDto>(Notifications, notification => notification.Acknowledged)
-            .OrderBy(notification => notification.Timestamp);
+            .OrderBy(notification => notification.Timestamp)
+            .ToList();
 
         var unConfirmedNotifications = Enumerable
             .Where<NotificationDto>(Notifications, notification => !notification.Acknowledged)
-            .OrderBy(notification => notification.Timestamp);
+            .OrderBy(notification => notification.Timestamp)
+            .ToList();
 
         var sortedNotifications = unConfirmedNotifications.Concat(confirmedNotifications);
         Notifications.Clear();

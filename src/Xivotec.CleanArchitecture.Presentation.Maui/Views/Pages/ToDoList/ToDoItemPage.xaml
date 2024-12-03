@@ -1,93 +1,95 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <controls:HeaderFooterPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.ToDoList;assembly=Xivotec.CleanArchitecture.Presentation.Core"
-             xmlns:dataTypes="clr-namespace:Xivotec.CleanArchitecture.Application.ToDoListFeature.Dtos;assembly=Xivotec.CleanArchitecture.Application"
-             xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
-             xmlns:converter="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Converter"
-             x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.ToDoList.ToDoItemPage"
-             x:DataType="viewModels:ToDoItemViewModel">
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.ToDoList;assembly=Xivotec.CleanArchitecture.Presentation.Core"
+                           xmlns:dataTypes="clr-namespace:Xivotec.CleanArchitecture.Application.ToDoListFeature.Dtos;assembly=Xivotec.CleanArchitecture.Application"
+                           xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
+                           xmlns:converter="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Converter"
+                           x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.ToDoList.ToDoItemPage"
+                           x:DataType="viewModels:ToDoItemViewModel">
 
     <ContentPage.Resources>
-        <converter:BoolToIconDoneImageSourceStringConverter x:Key="BoolToIconDoneImageSourceStringConverter"/>
+        <converter:BoolToIconDoneImageSourceStringConverter x:Key="BoolToIconDoneImageSourceStringConverter" />
     </ContentPage.Resources>
 
     <Grid Margin="20"
           RowDefinitions="Auto, Auto, *">
-        <ImageButton Source="{AppThemeBinding 
+        <ImageButton
+            Source="{AppThemeBinding 
                         Light=icon_back.png, 
                         Dark=icon_back_white.png}"
-                     HeightRequest="30"
-                     HorizontalOptions="Start"
-                     Margin="20,0,0,0"
-                     Command="{Binding NavigateBackCommand}"/>
+            HeightRequest="30"
+            HorizontalOptions="Start"
+            Margin="20,0,0,0"
+            Command="{Binding NavigateBackCommand}" />
 
-        <Label Text="{Binding Title, StringFormat='Current List: {0}'}" 
+        <Label Text="{Binding Title, StringFormat='Current List: {0}'}"
                FontSize="32"
                FontAttributes="Bold"
                HorizontalOptions="Center"
-               HorizontalTextAlignment="Center"/>
+               HorizontalTextAlignment="Center" />
 
         <HorizontalStackLayout Grid.Row="1">
-            <Label Text="Add Todo Item" 
-                   FontSize="25" 
+            <Label Text="Add Todo Item"
+                   FontSize="25"
                    FontAttributes="Bold"
                    VerticalOptions="Center"
-                   Margin="20"/>
+                   Margin="20" />
             <ImageButton
                 Source="{AppThemeBinding Light=icon_add.png,
                     Dark=icon_add_white.png}"
                 Command="{Binding AddNewItemCommand}"
-                HeightRequest="50" WidthRequest="50"/>
+                HeightRequest="50" WidthRequest="50" />
         </HorizontalStackLayout>
 
         <HorizontalStackLayout Grid.Row="1" HorizontalOptions="End">
             <Label Text="Search:"
                    FontSize="20"
-                   VerticalOptions="Center"/>
+                   VerticalOptions="Center" />
 
             <Entry HeightRequest="50"
-                   WidthRequest="200" 
+                   WidthRequest="200"
                    Margin="10"
-                   Placeholder="Search" 
+                   Placeholder="Search"
                    FontSize="20"
-                   Text="{Binding SearchText}"/>
+                   Text="{Binding SearchText}" />
         </HorizontalStackLayout>
 
         <ScrollView Grid.Row="2" Padding="20">
-            <VerticalStackLayout 
+            <VerticalStackLayout
                 BindableLayout.ItemsSource="{Binding ToDoItemsCollection, Mode=TwoWay}"
                 Spacing="10">
 
                 <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="{x:Type dataTypes:ToDoItemDto}" >
-                        
-                        <Grid ColumnDefinitions="*, 80" 
-                            ColumnSpacing="10" 
-                            HeightRequest="80">
+                    <DataTemplate x:DataType="{x:Type dataTypes:ToDoItemDto}">
+
+                        <Grid ColumnDefinitions="*, 80"
+                              ColumnSpacing="10"
+                              HeightRequest="80">
                             <Frame BorderColor="Gray"
-                                Padding="10"
-                                BackgroundColor="{AppThemeBinding 
+                                   Padding="10"
+                                   BackgroundColor="{AppThemeBinding 
                                     Light={StaticResource Gray100},
                                     Dark={StaticResource Black}}">
                                 <Grid ColumnDefinitions="*, AUTO">
-                                        
-                                    <Label 
+
+                                    <Label
                                         Text="{Binding Title}"
-                                        FontSize="24" 
-                                        VerticalOptions="Center"/>
+                                        FontSize="24"
+                                        VerticalOptions="Center" />
                                     <HorizontalStackLayout Grid.Column="1">
                                         <ImageButton Source="icon_edit.png"
                                                      Margin="5"
                                                      Command="{Binding Source={
                                                                RelativeSource AncestorType={x:Type viewModels:ToDoItemViewModel}},
-                                                               Path=EditItemCommand}"
-                                                     CommandParameter="{Binding .}"/>
+                                                               Path=EditItemCommand, x:DataType=viewModels:ToDoItemViewModel}"
+                                                     CommandParameter="{Binding .}" />
                                         <ImageButton Source="icon_bin.png"
                                                      Margin="5"
                                                      Command="{Binding Source={
                                                                RelativeSource AncestorType={x:Type viewModels:ToDoItemViewModel}},
-                                                               Path=DeleteItemCommand}"
+                                                               Path=DeleteItemCommand, x:DataType=viewModels:ToDoItemViewModel}"
                                                      CommandParameter="{Binding .}" />
                                     </HorizontalStackLayout>
                                 </Grid>
@@ -96,13 +98,13 @@
                                    BorderColor="gray"
                                    BackgroundColor="Transparent"
                                    Padding="10">
-                                <ImageButton 
+                                <ImageButton
                                     Source="{Binding Done,
                                         Converter={StaticResource BoolToIconDoneImageSourceStringConverter}}"
                                     Command="{Binding Source={
                                         RelativeSource AncestorType={x:Type viewModels:ToDoItemViewModel}},
-                                        Path=ItemDoneTappedCommand}"
-                                    CommandParameter="{Binding .}"/>
+                                        Path=ItemDoneTappedCommand, x:DataType=viewModels:ToDoItemViewModel}"
+                                    CommandParameter="{Binding .}" />
                             </Frame>
                         </Grid>
                     </DataTemplate>

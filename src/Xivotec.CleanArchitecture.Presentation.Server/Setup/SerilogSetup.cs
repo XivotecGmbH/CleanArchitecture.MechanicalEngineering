@@ -16,7 +16,7 @@ public static class SerilogSetup
 
         // Get IConfiguration service
         var serviceProvider = services.BuildServiceProvider();
-        var configService = serviceProvider.GetService<IConfiguration>();
+        var configService = serviceProvider.GetRequiredService<IConfiguration>();
 
         var options = new ConfigurationReaderOptions(
             typeof(ConsoleLoggerConfigurationExtensions).Assembly);

@@ -1,47 +1,49 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <controls:HeaderFooterPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.ToDoList;assembly=Xivotec.CleanArchitecture.Presentation.Core"
-             xmlns:dataTypes="clr-namespace:Xivotec.CleanArchitecture.Application.ToDoListFeature.Dtos;assembly=Xivotec.CleanArchitecture.Application"
-             xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
-             xmlns:converter="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Converter"
-             x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.ToDoList.ToDoListPage"
-             x:DataType="viewModels:ToDoListViewModel">
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:viewModels="clr-namespace:Xivotec.CleanArchitecture.Presentation.Core.ViewModels.ToDoList;assembly=Xivotec.CleanArchitecture.Presentation.Core"
+                           xmlns:dataTypes="clr-namespace:Xivotec.CleanArchitecture.Application.ToDoListFeature.Dtos;assembly=Xivotec.CleanArchitecture.Application"
+                           xmlns:controls="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Views.Controls"
+                           xmlns:converter="clr-namespace:Xivotec.CleanArchitecture.Presentation.Maui.Converter"
+                           x:Class="Xivotec.CleanArchitecture.Presentation.Maui.Views.Pages.ToDoList.ToDoListPage"
+                           x:DataType="viewModels:ToDoListViewModel">
 
     <ContentPage.Resources>
-        <converter:SystemColorToMauiColorConverter x:Key="SystemColorToMauiColorConverter"/>
+        <converter:SystemColorToMauiColorConverter x:Key="SystemColorToMauiColorConverter" />
     </ContentPage.Resources>
 
     <Grid Margin="20"
           RowDefinitions="Auto, Auto, *"
           RowSpacing="10">
-        <Label Text="Todo Lists" 
-            FontSize="32"
-            FontAttributes="Bold"
-            HorizontalTextAlignment="Center"/>
+        <Label Text="Todo Lists"
+               FontSize="32"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Center" />
 
         <VerticalStackLayout Grid.Row="1" Margin="0,0,0,10">
-            <Grid ColumnDefinitions="Auto, Auto, *" 
+            <Grid ColumnDefinitions="Auto, Auto, *"
                   ColumnSpacing="10">
-                <Border Stroke="{Binding BorderColor,
-                    Converter={StaticResource SystemColorToMauiColorConverter}}" 
-                        StrokeThickness="3">
-                    <Entry WidthRequest="300" 
-                           Placeholder="ToDoList Title" 
-                           FontSize="20" 
-                           Text="{Binding Title}"/>
+                <Border
+                    Stroke="{Binding BorderColor,
+                    Converter={StaticResource SystemColorToMauiColorConverter}}"
+                    StrokeThickness="3">
+                    <Entry WidthRequest="300"
+                           Placeholder="ToDoList Title"
+                           FontSize="20"
+                           Text="{Binding Title}" />
                 </Border>
 
-                <ImageButton 
+                <ImageButton
                     Source="{AppThemeBinding Light=icon_add.png, Dark=icon_add_white.png}"
-                    Command="{Binding AddNewListCommand}" 
+                    Command="{Binding AddNewListCommand}"
                     HeightRequest="50"
                     IsEnabled="{Binding IsAddButtonActive}"
-                    Grid.Column="1"/>
-                
-                <Picker Title="Sort by" 
-                        SelectedIndex="{Binding SortOrderIndex}" 
-                        Grid.Column="2" 
+                    Grid.Column="1" />
+
+                <Picker Title="Sort by"
+                        SelectedIndex="{Binding SortOrderIndex}"
+                        Grid.Column="2"
                         HorizontalOptions="End"
                         WidthRequest="200">
                     <Picker.Items>
@@ -54,40 +56,40 @@
                     </Picker.Items>
                 </Picker>
             </Grid>
-            
-            <Label Text="Invalid input (Only letters allowed)" 
-                   TextColor="Red" 
+
+            <Label Text="Invalid input (Only letters allowed)"
+                   TextColor="Red"
                    FontSize="14"
-                   IsVisible="{Binding IsErrorLabelActive}"/>
+                   IsVisible="{Binding IsErrorLabelActive}" />
         </VerticalStackLayout>
 
         <ScrollView Grid.Row="2">
             <StackLayout BindableLayout.ItemsSource="{Binding ToDoListsCollection}"
-                Spacing="10">
+                         Spacing="10">
                 <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="{x:Type dataTypes:ToDoListDto}" >
+                    <DataTemplate x:DataType="{x:Type dataTypes:ToDoListDto}">
                         <Frame BorderColor="Gray"
-                            BackgroundColor="{AppThemeBinding Light={StaticResource Gray100},
+                               BackgroundColor="{AppThemeBinding Light={StaticResource Gray100},
                             Dark={StaticResource Black}}">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer                                     
+                                <TapGestureRecognizer
                                     Command="{Binding Source={
                                         RelativeSource AncestorType={x:Type viewModels:ToDoListViewModel}}, 
-                                        Path=ListTappedCommand}"
+                                        Path=ListTappedCommand, x:DataType=viewModels:ToDoListViewModel}"
                                     CommandParameter="{Binding .}" />
                             </Frame.GestureRecognizers>
                             <Grid ColumnDefinitions="*, Auto">
                                 <Label Text="{Binding Title}"
-                                    FontSize="24" 
-                                    VerticalOptions="Center"/>
-                                <ImageButton Source="icon_bin.png" 
-                                    Grid.Column="1" 
-                                    HeightRequest="25" 
-                                    WidthRequest="25"
-                                    Command="{Binding Source={ 
+                                       FontSize="24"
+                                       VerticalOptions="Center" />
+                                <ImageButton Source="icon_bin.png"
+                                             Grid.Column="1"
+                                             HeightRequest="25"
+                                             WidthRequest="25"
+                                             Command="{Binding Source={ 
                                         RelativeSource AncestorType={x:Type viewModels:ToDoListViewModel}}, 
-                                        Path=DeleteListCommand}"
-                                    CommandParameter="{Binding .}" />
+                                        Path=DeleteListCommand, x:DataType=viewModels:ToDoListViewModel}"
+                                             CommandParameter="{Binding .}" />
                             </Grid>
                         </Frame>
                     </DataTemplate>
